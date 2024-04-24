@@ -1,0 +1,1378 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="APAM_DB_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="AdressId" />
+          </Key>
+          <Property Name="AdressId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Street" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BuildingNumber" Type="smallint" Nullable="false" />
+          <Property Name="BuildingLetter" Type="varchar" MaxLength="1" />
+          <Property Name="CorpusNumber" Type="tinyint" />
+          <Property Name="ApartmentNumber" Type="smallint" />
+          <Property Name="Settlement" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="District" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Region" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PostalCode" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="Administrator">
+          <Key>
+            <PropertyRef Name="AdministratorId" />
+          </Key>
+          <Property Name="AdministratorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Surname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AdministratorTypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AdministratorContact">
+          <Key>
+            <PropertyRef Name="AdministratorContactId" />
+          </Key>
+          <Property Name="AdministratorContactId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Value" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AdministratorId" Type="int" Nullable="false" />
+          <Property Name="ContactTypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AdministratorSalary">
+          <Key>
+            <PropertyRef Name="AdministratorSalaryId" />
+          </Key>
+          <Property Name="AdministratorSalaryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Salary" Type="money" Nullable="false" />
+          <Property Name="IssueDate" Type="date" Nullable="false" />
+          <Property Name="AdministratorId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AdministratorType">
+          <Key>
+            <PropertyRef Name="AdministratorTypeId" />
+          </Key>
+          <Property Name="AdministratorTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AutoPart">
+          <Key>
+            <PropertyRef Name="AutoPartId" />
+          </Key>
+          <Property Name="AutoPartId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AutoPartCategoryId" Type="int" Nullable="false" />
+          <Property Name="AutoPartManufacturerId" Type="int" Nullable="false" />
+          <Property Name="AutoPartCarModelId" Type="int" Nullable="false" />
+          <Property Name="Article" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ManufacturerPartCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cost" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AutoPartCarModel">
+          <Key>
+            <PropertyRef Name="AutoPartCarModelId" />
+          </Key>
+          <Property Name="AutoPartCarModelId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Brand" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Model" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AutoPartCategory">
+          <Key>
+            <PropertyRef Name="AutoPartCategoryId" />
+          </Key>
+          <Property Name="AutoPartCategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Category" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AutoPartManufacturer">
+          <Key>
+            <PropertyRef Name="AutoPartManufacturerId" />
+          </Key>
+          <Property Name="AutoPartManufacturerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Manufacturer" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Bookkeeper">
+          <Key>
+            <PropertyRef Name="BookkeeperId" />
+          </Key>
+          <Property Name="BookkeeperId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Surname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BookkeeperContact">
+          <Key>
+            <PropertyRef Name="BookkeeperContactId" />
+          </Key>
+          <Property Name="BookkeeperContactId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Value" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BookkeeperId" Type="int" Nullable="false" />
+          <Property Name="ContactTypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BookkeeperSalary">
+          <Key>
+            <PropertyRef Name="BookkeeperSalaryId" />
+          </Key>
+          <Property Name="BookkeeperSalaryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Salary" Type="money" Nullable="false" />
+          <Property Name="IssueDate" Type="date" Nullable="false" />
+          <Property Name="BookkeeperId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ContactType">
+          <Key>
+            <PropertyRef Name="ContactTypeId" />
+          </Key>
+          <Property Name="ContactTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Surname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BirthDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CustomerContact">
+          <Key>
+            <PropertyRef Name="CusomerContactId" />
+          </Key>
+          <Property Name="CusomerContactId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Value" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="ContactTypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SellerId" Type="int" Nullable="false" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="AutoPartId" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="OrderStatusId" Type="int" Nullable="false" />
+          <Property Name="OrderCreatedDateTime" Type="datetime2" Precision="7" />
+          <Property Name="OrderFinishedDateTime" Type="datetime2" Precision="7" />
+          <Property Name="From_AdressId" Type="int" Nullable="false" />
+          <Property Name="To_AdressId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderStatus">
+          <Key>
+            <PropertyRef Name="OrderStatusId" />
+          </Key>
+          <Property Name="OrderStatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Seller">
+          <Key>
+            <PropertyRef Name="SellerId" />
+          </Key>
+          <Property Name="SellerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Surname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SellerContact">
+          <Key>
+            <PropertyRef Name="SellerContactId" />
+          </Key>
+          <Property Name="SellerContactId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Value" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SellerId" Type="int" Nullable="false" />
+          <Property Name="ContactTypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SellerSalary">
+          <Key>
+            <PropertyRef Name="SellerSalaryId" />
+          </Key>
+          <Property Name="SellerSalaryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Salary" Type="money" Nullable="false" />
+          <Property Name="IssueDate" Type="date" Nullable="false" />
+          <Property Name="SellerId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Administrator_AdministratorType">
+          <End Role="AdministratorType" Type="Self.AdministratorType" Multiplicity="1" />
+          <End Role="Administrator" Type="Self.Administrator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdministratorType">
+              <PropertyRef Name="AdministratorTypeId" />
+            </Principal>
+            <Dependent Role="Administrator">
+              <PropertyRef Name="AdministratorTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdministratorContact_Administrator">
+          <End Role="Administrator" Type="Self.Administrator" Multiplicity="1" />
+          <End Role="AdministratorContact" Type="Self.AdministratorContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Administrator">
+              <PropertyRef Name="AdministratorId" />
+            </Principal>
+            <Dependent Role="AdministratorContact">
+              <PropertyRef Name="AdministratorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdministratorContact_ContactType">
+          <End Role="ContactType" Type="Self.ContactType" Multiplicity="1" />
+          <End Role="AdministratorContact" Type="Self.AdministratorContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactType">
+              <PropertyRef Name="ContactTypeId" />
+            </Principal>
+            <Dependent Role="AdministratorContact">
+              <PropertyRef Name="ContactTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdministratorSalary_Administrator">
+          <End Role="Administrator" Type="Self.Administrator" Multiplicity="1" />
+          <End Role="AdministratorSalary" Type="Self.AdministratorSalary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Administrator">
+              <PropertyRef Name="AdministratorId" />
+            </Principal>
+            <Dependent Role="AdministratorSalary">
+              <PropertyRef Name="AdministratorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AutoPart_AutoPartCarModel">
+          <End Role="AutoPartCarModel" Type="Self.AutoPartCarModel" Multiplicity="1" />
+          <End Role="AutoPart" Type="Self.AutoPart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AutoPartCarModel">
+              <PropertyRef Name="AutoPartCarModelId" />
+            </Principal>
+            <Dependent Role="AutoPart">
+              <PropertyRef Name="AutoPartCarModelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AutoPart_AutoPartCategory">
+          <End Role="AutoPartCategory" Type="Self.AutoPartCategory" Multiplicity="1" />
+          <End Role="AutoPart" Type="Self.AutoPart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AutoPartCategory">
+              <PropertyRef Name="AutoPartCategoryId" />
+            </Principal>
+            <Dependent Role="AutoPart">
+              <PropertyRef Name="AutoPartCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AutoPart_AutoPartManufacturer">
+          <End Role="AutoPartManufacturer" Type="Self.AutoPartManufacturer" Multiplicity="1" />
+          <End Role="AutoPart" Type="Self.AutoPart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AutoPartManufacturer">
+              <PropertyRef Name="AutoPartManufacturerId" />
+            </Principal>
+            <Dependent Role="AutoPart">
+              <PropertyRef Name="AutoPartManufacturerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookkeeperContact_Bookkeeper">
+          <End Role="Bookkeeper" Type="Self.Bookkeeper" Multiplicity="1" />
+          <End Role="BookkeeperContact" Type="Self.BookkeeperContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bookkeeper">
+              <PropertyRef Name="BookkeeperId" />
+            </Principal>
+            <Dependent Role="BookkeeperContact">
+              <PropertyRef Name="BookkeeperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookkeeperContact_ContactType">
+          <End Role="ContactType" Type="Self.ContactType" Multiplicity="1" />
+          <End Role="BookkeeperContact" Type="Self.BookkeeperContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactType">
+              <PropertyRef Name="ContactTypeId" />
+            </Principal>
+            <Dependent Role="BookkeeperContact">
+              <PropertyRef Name="ContactTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookkeeperSalary_Bookkeeper">
+          <End Role="Bookkeeper" Type="Self.Bookkeeper" Multiplicity="1" />
+          <End Role="BookkeeperSalary" Type="Self.BookkeeperSalary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bookkeeper">
+              <PropertyRef Name="BookkeeperId" />
+            </Principal>
+            <Dependent Role="BookkeeperSalary">
+              <PropertyRef Name="BookkeeperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contact_ContactType">
+          <End Role="ContactType" Type="Self.ContactType" Multiplicity="1" />
+          <End Role="CustomerContact" Type="Self.CustomerContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactType">
+              <PropertyRef Name="ContactTypeId" />
+            </Principal>
+            <Dependent Role="CustomerContact">
+              <PropertyRef Name="ContactTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contact_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="CustomerContact" Type="Self.CustomerContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="CustomerContact">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_AutoPart">
+          <End Role="AutoPart" Type="Self.AutoPart" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AutoPart">
+              <PropertyRef Name="AutoPartId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="AutoPartId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_From_Address">
+          <End Role="Address" Type="Self.Address" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AdressId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="From_AdressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_OrderStatus">
+          <End Role="OrderStatus" Type="Self.OrderStatus" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderStatus">
+              <PropertyRef Name="OrderStatusId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="OrderStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Seller">
+          <End Role="Seller" Type="Self.Seller" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seller">
+              <PropertyRef Name="SellerId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="SellerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_To_Address">
+          <End Role="Address" Type="Self.Address" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AdressId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="To_AdressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SellerContact_ContactType">
+          <End Role="ContactType" Type="Self.ContactType" Multiplicity="1" />
+          <End Role="SellerContact" Type="Self.SellerContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactType">
+              <PropertyRef Name="ContactTypeId" />
+            </Principal>
+            <Dependent Role="SellerContact">
+              <PropertyRef Name="ContactTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SellerContact_Seller">
+          <End Role="Seller" Type="Self.Seller" Multiplicity="1" />
+          <End Role="SellerContact" Type="Self.SellerContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seller">
+              <PropertyRef Name="SellerId" />
+            </Principal>
+            <Dependent Role="SellerContact">
+              <PropertyRef Name="SellerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SellerSalary_Seller">
+          <End Role="Seller" Type="Self.Seller" Multiplicity="1" />
+          <End Role="SellerSalary" Type="Self.SellerSalary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seller">
+              <PropertyRef Name="SellerId" />
+            </Principal>
+            <Dependent Role="SellerSalary">
+              <PropertyRef Name="SellerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="APAM_DB_ModelStoreContainer">
+          <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Administrator" EntityType="Self.Administrator" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdministratorContact" EntityType="Self.AdministratorContact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdministratorSalary" EntityType="Self.AdministratorSalary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdministratorType" EntityType="Self.AdministratorType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AutoPart" EntityType="Self.AutoPart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AutoPartCarModel" EntityType="Self.AutoPartCarModel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AutoPartCategory" EntityType="Self.AutoPartCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AutoPartManufacturer" EntityType="Self.AutoPartManufacturer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bookkeeper" EntityType="Self.Bookkeeper" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BookkeeperContact" EntityType="Self.BookkeeperContact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BookkeeperSalary" EntityType="Self.BookkeeperSalary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContactType" EntityType="Self.ContactType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerContact" EntityType="Self.CustomerContact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderStatus" EntityType="Self.OrderStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Seller" EntityType="Self.Seller" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SellerContact" EntityType="Self.SellerContact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SellerSalary" EntityType="Self.SellerSalary" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Administrator_AdministratorType" Association="Self.FK_Administrator_AdministratorType">
+            <End Role="AdministratorType" EntitySet="AdministratorType" />
+            <End Role="Administrator" EntitySet="Administrator" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdministratorContact_Administrator" Association="Self.FK_AdministratorContact_Administrator">
+            <End Role="Administrator" EntitySet="Administrator" />
+            <End Role="AdministratorContact" EntitySet="AdministratorContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdministratorContact_ContactType" Association="Self.FK_AdministratorContact_ContactType">
+            <End Role="ContactType" EntitySet="ContactType" />
+            <End Role="AdministratorContact" EntitySet="AdministratorContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdministratorSalary_Administrator" Association="Self.FK_AdministratorSalary_Administrator">
+            <End Role="Administrator" EntitySet="Administrator" />
+            <End Role="AdministratorSalary" EntitySet="AdministratorSalary" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AutoPart_AutoPartCarModel" Association="Self.FK_AutoPart_AutoPartCarModel">
+            <End Role="AutoPartCarModel" EntitySet="AutoPartCarModel" />
+            <End Role="AutoPart" EntitySet="AutoPart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AutoPart_AutoPartCategory" Association="Self.FK_AutoPart_AutoPartCategory">
+            <End Role="AutoPartCategory" EntitySet="AutoPartCategory" />
+            <End Role="AutoPart" EntitySet="AutoPart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AutoPart_AutoPartManufacturer" Association="Self.FK_AutoPart_AutoPartManufacturer">
+            <End Role="AutoPartManufacturer" EntitySet="AutoPartManufacturer" />
+            <End Role="AutoPart" EntitySet="AutoPart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookkeeperContact_Bookkeeper" Association="Self.FK_BookkeeperContact_Bookkeeper">
+            <End Role="Bookkeeper" EntitySet="Bookkeeper" />
+            <End Role="BookkeeperContact" EntitySet="BookkeeperContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookkeeperContact_ContactType" Association="Self.FK_BookkeeperContact_ContactType">
+            <End Role="ContactType" EntitySet="ContactType" />
+            <End Role="BookkeeperContact" EntitySet="BookkeeperContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookkeeperSalary_Bookkeeper" Association="Self.FK_BookkeeperSalary_Bookkeeper">
+            <End Role="Bookkeeper" EntitySet="Bookkeeper" />
+            <End Role="BookkeeperSalary" EntitySet="BookkeeperSalary" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contact_ContactType" Association="Self.FK_Contact_ContactType">
+            <End Role="ContactType" EntitySet="ContactType" />
+            <End Role="CustomerContact" EntitySet="CustomerContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contact_Customer" Association="Self.FK_Contact_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="CustomerContact" EntitySet="CustomerContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_AutoPart" Association="Self.FK_Order_AutoPart">
+            <End Role="AutoPart" EntitySet="AutoPart" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Customer" Association="Self.FK_Order_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_From_Address" Association="Self.FK_Order_From_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_OrderStatus" Association="Self.FK_Order_OrderStatus">
+            <End Role="OrderStatus" EntitySet="OrderStatus" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Seller" Association="Self.FK_Order_Seller">
+            <End Role="Seller" EntitySet="Seller" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_To_Address" Association="Self.FK_Order_To_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SellerContact_ContactType" Association="Self.FK_SellerContact_ContactType">
+            <End Role="ContactType" EntitySet="ContactType" />
+            <End Role="SellerContact" EntitySet="SellerContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SellerContact_Seller" Association="Self.FK_SellerContact_Seller">
+            <End Role="Seller" EntitySet="Seller" />
+            <End Role="SellerContact" EntitySet="SellerContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SellerSalary_Seller" Association="Self.FK_SellerSalary_Seller">
+            <End Role="Seller" EntitySet="Seller" />
+            <End Role="SellerSalary" EntitySet="SellerSalary" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="APAM_DB_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="AdressId" />
+          </Key>
+          <Property Name="AdressId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Street" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BuildingNumber" Type="Int16" Nullable="false" />
+          <Property Name="BuildingLetter" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="CorpusNumber" Type="Byte" />
+          <Property Name="ApartmentNumber" Type="Int16" />
+          <Property Name="Settlement" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="District" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Region" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PostalCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_From_Address" FromRole="Address" ToRole="Order" />
+          <NavigationProperty Name="Orders1" Relationship="Self.FK_Order_To_Address" FromRole="Address" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Administrator">
+          <Key>
+            <PropertyRef Name="AdministratorId" />
+          </Key>
+          <Property Name="AdministratorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AdministratorTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AdministratorType" Relationship="Self.FK_Administrator_AdministratorType" FromRole="Administrator" ToRole="AdministratorType" />
+          <NavigationProperty Name="AdministratorContacts" Relationship="Self.FK_AdministratorContact_Administrator" FromRole="Administrator" ToRole="AdministratorContact" />
+          <NavigationProperty Name="AdministratorSalaries" Relationship="Self.FK_AdministratorSalary_Administrator" FromRole="Administrator" ToRole="AdministratorSalary" />
+        </EntityType>
+        <EntityType Name="AdministratorContact">
+          <Key>
+            <PropertyRef Name="AdministratorContactId" />
+          </Key>
+          <Property Name="AdministratorContactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AdministratorId" Type="Int32" Nullable="false" />
+          <Property Name="ContactTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Administrator" Relationship="Self.FK_AdministratorContact_Administrator" FromRole="AdministratorContact" ToRole="Administrator" />
+          <NavigationProperty Name="ContactType" Relationship="Self.FK_AdministratorContact_ContactType" FromRole="AdministratorContact" ToRole="ContactType" />
+        </EntityType>
+        <EntityType Name="AdministratorSalary">
+          <Key>
+            <PropertyRef Name="AdministratorSalaryId" />
+          </Key>
+          <Property Name="AdministratorSalaryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Salary" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="IssueDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="AdministratorId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Administrator" Relationship="Self.FK_AdministratorSalary_Administrator" FromRole="AdministratorSalary" ToRole="Administrator" />
+        </EntityType>
+        <EntityType Name="AdministratorType">
+          <Key>
+            <PropertyRef Name="AdministratorTypeId" />
+          </Key>
+          <Property Name="AdministratorTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Administrators" Relationship="Self.FK_Administrator_AdministratorType" FromRole="AdministratorType" ToRole="Administrator" />
+        </EntityType>
+        <EntityType Name="AutoPart">
+          <Key>
+            <PropertyRef Name="AutoPartId" />
+          </Key>
+          <Property Name="AutoPartId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AutoPartCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="AutoPartManufacturerId" Type="Int32" Nullable="false" />
+          <Property Name="AutoPartCarModelId" Type="Int32" Nullable="false" />
+          <Property Name="Article" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ManufacturerPartCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cost" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="AutoPartCarModel" Relationship="Self.FK_AutoPart_AutoPartCarModel" FromRole="AutoPart" ToRole="AutoPartCarModel" />
+          <NavigationProperty Name="AutoPartCategory" Relationship="Self.FK_AutoPart_AutoPartCategory" FromRole="AutoPart" ToRole="AutoPartCategory" />
+          <NavigationProperty Name="AutoPartManufacturer" Relationship="Self.FK_AutoPart_AutoPartManufacturer" FromRole="AutoPart" ToRole="AutoPartManufacturer" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_AutoPart" FromRole="AutoPart" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="AutoPartCarModel">
+          <Key>
+            <PropertyRef Name="AutoPartCarModelId" />
+          </Key>
+          <Property Name="AutoPartCarModelId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Brand" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AutoParts" Relationship="Self.FK_AutoPart_AutoPartCarModel" FromRole="AutoPartCarModel" ToRole="AutoPart" />
+        </EntityType>
+        <EntityType Name="AutoPartCategory">
+          <Key>
+            <PropertyRef Name="AutoPartCategoryId" />
+          </Key>
+          <Property Name="AutoPartCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AutoParts" Relationship="Self.FK_AutoPart_AutoPartCategory" FromRole="AutoPartCategory" ToRole="AutoPart" />
+        </EntityType>
+        <EntityType Name="AutoPartManufacturer">
+          <Key>
+            <PropertyRef Name="AutoPartManufacturerId" />
+          </Key>
+          <Property Name="AutoPartManufacturerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AutoParts" Relationship="Self.FK_AutoPart_AutoPartManufacturer" FromRole="AutoPartManufacturer" ToRole="AutoPart" />
+        </EntityType>
+        <EntityType Name="Bookkeeper">
+          <Key>
+            <PropertyRef Name="BookkeeperId" />
+          </Key>
+          <Property Name="BookkeeperId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="BookkeeperContacts" Relationship="Self.FK_BookkeeperContact_Bookkeeper" FromRole="Bookkeeper" ToRole="BookkeeperContact" />
+          <NavigationProperty Name="BookkeeperSalaries" Relationship="Self.FK_BookkeeperSalary_Bookkeeper" FromRole="Bookkeeper" ToRole="BookkeeperSalary" />
+        </EntityType>
+        <EntityType Name="BookkeeperContact">
+          <Key>
+            <PropertyRef Name="BookkeeperContactId" />
+          </Key>
+          <Property Name="BookkeeperContactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BookkeeperId" Type="Int32" Nullable="false" />
+          <Property Name="ContactTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Bookkeeper" Relationship="Self.FK_BookkeeperContact_Bookkeeper" FromRole="BookkeeperContact" ToRole="Bookkeeper" />
+          <NavigationProperty Name="ContactType" Relationship="Self.FK_BookkeeperContact_ContactType" FromRole="BookkeeperContact" ToRole="ContactType" />
+        </EntityType>
+        <EntityType Name="BookkeeperSalary">
+          <Key>
+            <PropertyRef Name="BookkeeperSalaryId" />
+          </Key>
+          <Property Name="BookkeeperSalaryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Salary" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="IssueDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="BookkeeperId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Bookkeeper" Relationship="Self.FK_BookkeeperSalary_Bookkeeper" FromRole="BookkeeperSalary" ToRole="Bookkeeper" />
+        </EntityType>
+        <EntityType Name="ContactType">
+          <Key>
+            <PropertyRef Name="ContactTypeId" />
+          </Key>
+          <Property Name="ContactTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AdministratorContacts" Relationship="Self.FK_AdministratorContact_ContactType" FromRole="ContactType" ToRole="AdministratorContact" />
+          <NavigationProperty Name="BookkeeperContacts" Relationship="Self.FK_BookkeeperContact_ContactType" FromRole="ContactType" ToRole="BookkeeperContact" />
+          <NavigationProperty Name="CustomerContacts" Relationship="Self.FK_Contact_ContactType" FromRole="ContactType" ToRole="CustomerContact" />
+          <NavigationProperty Name="SellerContacts" Relationship="Self.FK_SellerContact_ContactType" FromRole="ContactType" ToRole="SellerContact" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="CustomerContacts" Relationship="Self.FK_Contact_Customer" FromRole="Customer" ToRole="CustomerContact" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Customer" FromRole="Customer" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="CustomerContact">
+          <Key>
+            <PropertyRef Name="CusomerContactId" />
+          </Key>
+          <Property Name="CusomerContactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="ContactTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ContactType" Relationship="Self.FK_Contact_ContactType" FromRole="CustomerContact" ToRole="ContactType" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Contact_Customer" FromRole="CustomerContact" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SellerId" Type="Int32" Nullable="false" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="AutoPartId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OrderStatusId" Type="Int32" Nullable="false" />
+          <Property Name="OrderCreatedDateTime" Type="DateTime" Precision="7" />
+          <Property Name="OrderFinishedDateTime" Type="DateTime" Precision="7" />
+          <Property Name="From_AdressId" Type="Int32" Nullable="false" />
+          <Property Name="To_AdressId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Address" Relationship="Self.FK_Order_From_Address" FromRole="Order" ToRole="Address" />
+          <NavigationProperty Name="Address1" Relationship="Self.FK_Order_To_Address" FromRole="Order" ToRole="Address" />
+          <NavigationProperty Name="AutoPart" Relationship="Self.FK_Order_AutoPart" FromRole="Order" ToRole="AutoPart" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Order_Customer" FromRole="Order" ToRole="Customer" />
+          <NavigationProperty Name="OrderStatu" Relationship="Self.FK_Order_OrderStatus" FromRole="Order" ToRole="OrderStatus" />
+          <NavigationProperty Name="Seller" Relationship="Self.FK_Order_Seller" FromRole="Order" ToRole="Seller" />
+        </EntityType>
+        <EntityType Name="OrderStatu">
+          <Key>
+            <PropertyRef Name="OrderStatusId" />
+          </Key>
+          <Property Name="OrderStatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_OrderStatus" FromRole="OrderStatus" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Seller">
+          <Key>
+            <PropertyRef Name="SellerId" />
+          </Key>
+          <Property Name="SellerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Seller" FromRole="Seller" ToRole="Order" />
+          <NavigationProperty Name="SellerContacts" Relationship="Self.FK_SellerContact_Seller" FromRole="Seller" ToRole="SellerContact" />
+          <NavigationProperty Name="SellerSalaries" Relationship="Self.FK_SellerSalary_Seller" FromRole="Seller" ToRole="SellerSalary" />
+        </EntityType>
+        <EntityType Name="SellerContact">
+          <Key>
+            <PropertyRef Name="SellerContactId" />
+          </Key>
+          <Property Name="SellerContactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SellerId" Type="Int32" Nullable="false" />
+          <Property Name="ContactTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ContactType" Relationship="Self.FK_SellerContact_ContactType" FromRole="SellerContact" ToRole="ContactType" />
+          <NavigationProperty Name="Seller" Relationship="Self.FK_SellerContact_Seller" FromRole="SellerContact" ToRole="Seller" />
+        </EntityType>
+        <EntityType Name="SellerSalary">
+          <Key>
+            <PropertyRef Name="SellerSalaryId" />
+          </Key>
+          <Property Name="SellerSalaryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Salary" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="IssueDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="SellerId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Seller" Relationship="Self.FK_SellerSalary_Seller" FromRole="SellerSalary" ToRole="Seller" />
+        </EntityType>
+        <Association Name="FK_Order_From_Address">
+          <End Role="Address" Type="Self.Address" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AdressId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="From_AdressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_To_Address">
+          <End Role="Address" Type="Self.Address" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AdressId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="To_AdressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Administrator_AdministratorType">
+          <End Role="AdministratorType" Type="Self.AdministratorType" Multiplicity="1" />
+          <End Role="Administrator" Type="Self.Administrator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdministratorType">
+              <PropertyRef Name="AdministratorTypeId" />
+            </Principal>
+            <Dependent Role="Administrator">
+              <PropertyRef Name="AdministratorTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdministratorContact_Administrator">
+          <End Role="Administrator" Type="Self.Administrator" Multiplicity="1" />
+          <End Role="AdministratorContact" Type="Self.AdministratorContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Administrator">
+              <PropertyRef Name="AdministratorId" />
+            </Principal>
+            <Dependent Role="AdministratorContact">
+              <PropertyRef Name="AdministratorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdministratorSalary_Administrator">
+          <End Role="Administrator" Type="Self.Administrator" Multiplicity="1" />
+          <End Role="AdministratorSalary" Type="Self.AdministratorSalary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Administrator">
+              <PropertyRef Name="AdministratorId" />
+            </Principal>
+            <Dependent Role="AdministratorSalary">
+              <PropertyRef Name="AdministratorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdministratorContact_ContactType">
+          <End Role="ContactType" Type="Self.ContactType" Multiplicity="1" />
+          <End Role="AdministratorContact" Type="Self.AdministratorContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactType">
+              <PropertyRef Name="ContactTypeId" />
+            </Principal>
+            <Dependent Role="AdministratorContact">
+              <PropertyRef Name="ContactTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AutoPart_AutoPartCarModel">
+          <End Role="AutoPartCarModel" Type="Self.AutoPartCarModel" Multiplicity="1" />
+          <End Role="AutoPart" Type="Self.AutoPart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AutoPartCarModel">
+              <PropertyRef Name="AutoPartCarModelId" />
+            </Principal>
+            <Dependent Role="AutoPart">
+              <PropertyRef Name="AutoPartCarModelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AutoPart_AutoPartCategory">
+          <End Role="AutoPartCategory" Type="Self.AutoPartCategory" Multiplicity="1" />
+          <End Role="AutoPart" Type="Self.AutoPart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AutoPartCategory">
+              <PropertyRef Name="AutoPartCategoryId" />
+            </Principal>
+            <Dependent Role="AutoPart">
+              <PropertyRef Name="AutoPartCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AutoPart_AutoPartManufacturer">
+          <End Role="AutoPartManufacturer" Type="Self.AutoPartManufacturer" Multiplicity="1" />
+          <End Role="AutoPart" Type="Self.AutoPart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AutoPartManufacturer">
+              <PropertyRef Name="AutoPartManufacturerId" />
+            </Principal>
+            <Dependent Role="AutoPart">
+              <PropertyRef Name="AutoPartManufacturerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_AutoPart">
+          <End Role="AutoPart" Type="Self.AutoPart" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AutoPart">
+              <PropertyRef Name="AutoPartId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="AutoPartId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookkeeperContact_Bookkeeper">
+          <End Role="Bookkeeper" Type="Self.Bookkeeper" Multiplicity="1" />
+          <End Role="BookkeeperContact" Type="Self.BookkeeperContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bookkeeper">
+              <PropertyRef Name="BookkeeperId" />
+            </Principal>
+            <Dependent Role="BookkeeperContact">
+              <PropertyRef Name="BookkeeperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookkeeperSalary_Bookkeeper">
+          <End Role="Bookkeeper" Type="Self.Bookkeeper" Multiplicity="1" />
+          <End Role="BookkeeperSalary" Type="Self.BookkeeperSalary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bookkeeper">
+              <PropertyRef Name="BookkeeperId" />
+            </Principal>
+            <Dependent Role="BookkeeperSalary">
+              <PropertyRef Name="BookkeeperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookkeeperContact_ContactType">
+          <End Role="ContactType" Type="Self.ContactType" Multiplicity="1" />
+          <End Role="BookkeeperContact" Type="Self.BookkeeperContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactType">
+              <PropertyRef Name="ContactTypeId" />
+            </Principal>
+            <Dependent Role="BookkeeperContact">
+              <PropertyRef Name="ContactTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contact_ContactType">
+          <End Role="ContactType" Type="Self.ContactType" Multiplicity="1" />
+          <End Role="CustomerContact" Type="Self.CustomerContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactType">
+              <PropertyRef Name="ContactTypeId" />
+            </Principal>
+            <Dependent Role="CustomerContact">
+              <PropertyRef Name="ContactTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SellerContact_ContactType">
+          <End Role="ContactType" Type="Self.ContactType" Multiplicity="1" />
+          <End Role="SellerContact" Type="Self.SellerContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactType">
+              <PropertyRef Name="ContactTypeId" />
+            </Principal>
+            <Dependent Role="SellerContact">
+              <PropertyRef Name="ContactTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contact_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="CustomerContact" Type="Self.CustomerContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="CustomerContact">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_OrderStatus">
+          <End Role="OrderStatus" Type="Self.OrderStatu" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderStatus">
+              <PropertyRef Name="OrderStatusId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="OrderStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Seller">
+          <End Role="Seller" Type="Self.Seller" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seller">
+              <PropertyRef Name="SellerId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="SellerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SellerContact_Seller">
+          <End Role="Seller" Type="Self.Seller" Multiplicity="1" />
+          <End Role="SellerContact" Type="Self.SellerContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seller">
+              <PropertyRef Name="SellerId" />
+            </Principal>
+            <Dependent Role="SellerContact">
+              <PropertyRef Name="SellerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SellerSalary_Seller">
+          <End Role="Seller" Type="Self.Seller" Multiplicity="1" />
+          <End Role="SellerSalary" Type="Self.SellerSalary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seller">
+              <PropertyRef Name="SellerId" />
+            </Principal>
+            <Dependent Role="SellerSalary">
+              <PropertyRef Name="SellerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="APAM_DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Addresses" EntityType="Self.Address" />
+          <EntitySet Name="Administrators" EntityType="Self.Administrator" />
+          <EntitySet Name="AdministratorContacts" EntityType="Self.AdministratorContact" />
+          <EntitySet Name="AdministratorSalaries" EntityType="Self.AdministratorSalary" />
+          <EntitySet Name="AdministratorTypes" EntityType="Self.AdministratorType" />
+          <EntitySet Name="AutoParts" EntityType="Self.AutoPart" />
+          <EntitySet Name="AutoPartCarModels" EntityType="Self.AutoPartCarModel" />
+          <EntitySet Name="AutoPartCategories" EntityType="Self.AutoPartCategory" />
+          <EntitySet Name="AutoPartManufacturers" EntityType="Self.AutoPartManufacturer" />
+          <EntitySet Name="Bookkeepers" EntityType="Self.Bookkeeper" />
+          <EntitySet Name="BookkeeperContacts" EntityType="Self.BookkeeperContact" />
+          <EntitySet Name="BookkeeperSalaries" EntityType="Self.BookkeeperSalary" />
+          <EntitySet Name="ContactTypes" EntityType="Self.ContactType" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="CustomerContacts" EntityType="Self.CustomerContact" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="OrderStatus" EntityType="Self.OrderStatu" />
+          <EntitySet Name="Sellers" EntityType="Self.Seller" />
+          <EntitySet Name="SellerContacts" EntityType="Self.SellerContact" />
+          <EntitySet Name="SellerSalaries" EntityType="Self.SellerSalary" />
+          <AssociationSet Name="FK_Order_From_Address" Association="Self.FK_Order_From_Address">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_To_Address" Association="Self.FK_Order_To_Address">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Administrator_AdministratorType" Association="Self.FK_Administrator_AdministratorType">
+            <End Role="AdministratorType" EntitySet="AdministratorTypes" />
+            <End Role="Administrator" EntitySet="Administrators" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdministratorContact_Administrator" Association="Self.FK_AdministratorContact_Administrator">
+            <End Role="Administrator" EntitySet="Administrators" />
+            <End Role="AdministratorContact" EntitySet="AdministratorContacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdministratorSalary_Administrator" Association="Self.FK_AdministratorSalary_Administrator">
+            <End Role="Administrator" EntitySet="Administrators" />
+            <End Role="AdministratorSalary" EntitySet="AdministratorSalaries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdministratorContact_ContactType" Association="Self.FK_AdministratorContact_ContactType">
+            <End Role="ContactType" EntitySet="ContactTypes" />
+            <End Role="AdministratorContact" EntitySet="AdministratorContacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AutoPart_AutoPartCarModel" Association="Self.FK_AutoPart_AutoPartCarModel">
+            <End Role="AutoPartCarModel" EntitySet="AutoPartCarModels" />
+            <End Role="AutoPart" EntitySet="AutoParts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AutoPart_AutoPartCategory" Association="Self.FK_AutoPart_AutoPartCategory">
+            <End Role="AutoPartCategory" EntitySet="AutoPartCategories" />
+            <End Role="AutoPart" EntitySet="AutoParts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AutoPart_AutoPartManufacturer" Association="Self.FK_AutoPart_AutoPartManufacturer">
+            <End Role="AutoPartManufacturer" EntitySet="AutoPartManufacturers" />
+            <End Role="AutoPart" EntitySet="AutoParts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_AutoPart" Association="Self.FK_Order_AutoPart">
+            <End Role="AutoPart" EntitySet="AutoParts" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookkeeperContact_Bookkeeper" Association="Self.FK_BookkeeperContact_Bookkeeper">
+            <End Role="Bookkeeper" EntitySet="Bookkeepers" />
+            <End Role="BookkeeperContact" EntitySet="BookkeeperContacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookkeeperSalary_Bookkeeper" Association="Self.FK_BookkeeperSalary_Bookkeeper">
+            <End Role="Bookkeeper" EntitySet="Bookkeepers" />
+            <End Role="BookkeeperSalary" EntitySet="BookkeeperSalaries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookkeeperContact_ContactType" Association="Self.FK_BookkeeperContact_ContactType">
+            <End Role="ContactType" EntitySet="ContactTypes" />
+            <End Role="BookkeeperContact" EntitySet="BookkeeperContacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contact_ContactType" Association="Self.FK_Contact_ContactType">
+            <End Role="ContactType" EntitySet="ContactTypes" />
+            <End Role="CustomerContact" EntitySet="CustomerContacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SellerContact_ContactType" Association="Self.FK_SellerContact_ContactType">
+            <End Role="ContactType" EntitySet="ContactTypes" />
+            <End Role="SellerContact" EntitySet="SellerContacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contact_Customer" Association="Self.FK_Contact_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="CustomerContact" EntitySet="CustomerContacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Customer" Association="Self.FK_Order_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_OrderStatus" Association="Self.FK_Order_OrderStatus">
+            <End Role="OrderStatus" EntitySet="OrderStatus" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Seller" Association="Self.FK_Order_Seller">
+            <End Role="Seller" EntitySet="Sellers" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SellerContact_Seller" Association="Self.FK_SellerContact_Seller">
+            <End Role="Seller" EntitySet="Sellers" />
+            <End Role="SellerContact" EntitySet="SellerContacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SellerSalary_Seller" Association="Self.FK_SellerSalary_Seller">
+            <End Role="Seller" EntitySet="Sellers" />
+            <End Role="SellerSalary" EntitySet="SellerSalaries" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="APAM_DB_ModelStoreContainer" CdmEntityContainer="APAM_DBEntities">
+          <EntitySetMapping Name="Addresses">
+            <EntityTypeMapping TypeName="APAM_DB_Model.Address">
+              <MappingFragment StoreEntitySet="Address">
+                <ScalarProperty Name="AdressId" ColumnName="AdressId" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="BuildingNumber" ColumnName="BuildingNumber" />
+                <ScalarProperty Name="BuildingLetter" ColumnName="BuildingLetter" />
+                <ScalarProperty Name="CorpusNumber" ColumnName="CorpusNumber" />
+                <ScalarProperty Name="ApartmentNumber" ColumnName="ApartmentNumber" />
+                <ScalarProperty Name="Settlement" ColumnName="Settlement" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Administrators">
+            <EntityTypeMapping TypeName="APAM_DB_Model.Administrator">
+              <MappingFragment StoreEntitySet="Administrator">
+                <ScalarProperty Name="AdministratorId" ColumnName="AdministratorId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="AdministratorTypeId" ColumnName="AdministratorTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdministratorContacts">
+            <EntityTypeMapping TypeName="APAM_DB_Model.AdministratorContact">
+              <MappingFragment StoreEntitySet="AdministratorContact">
+                <ScalarProperty Name="AdministratorContactId" ColumnName="AdministratorContactId" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="AdministratorId" ColumnName="AdministratorId" />
+                <ScalarProperty Name="ContactTypeId" ColumnName="ContactTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdministratorSalaries">
+            <EntityTypeMapping TypeName="APAM_DB_Model.AdministratorSalary">
+              <MappingFragment StoreEntitySet="AdministratorSalary">
+                <ScalarProperty Name="AdministratorSalaryId" ColumnName="AdministratorSalaryId" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+                <ScalarProperty Name="AdministratorId" ColumnName="AdministratorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdministratorTypes">
+            <EntityTypeMapping TypeName="APAM_DB_Model.AdministratorType">
+              <MappingFragment StoreEntitySet="AdministratorType">
+                <ScalarProperty Name="AdministratorTypeId" ColumnName="AdministratorTypeId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AutoParts">
+            <EntityTypeMapping TypeName="APAM_DB_Model.AutoPart">
+              <MappingFragment StoreEntitySet="AutoPart">
+                <ScalarProperty Name="AutoPartId" ColumnName="AutoPartId" />
+                <ScalarProperty Name="AutoPartCategoryId" ColumnName="AutoPartCategoryId" />
+                <ScalarProperty Name="AutoPartManufacturerId" ColumnName="AutoPartManufacturerId" />
+                <ScalarProperty Name="AutoPartCarModelId" ColumnName="AutoPartCarModelId" />
+                <ScalarProperty Name="Article" ColumnName="Article" />
+                <ScalarProperty Name="ManufacturerPartCode" ColumnName="ManufacturerPartCode" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AutoPartCarModels">
+            <EntityTypeMapping TypeName="APAM_DB_Model.AutoPartCarModel">
+              <MappingFragment StoreEntitySet="AutoPartCarModel">
+                <ScalarProperty Name="AutoPartCarModelId" ColumnName="AutoPartCarModelId" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AutoPartCategories">
+            <EntityTypeMapping TypeName="APAM_DB_Model.AutoPartCategory">
+              <MappingFragment StoreEntitySet="AutoPartCategory">
+                <ScalarProperty Name="AutoPartCategoryId" ColumnName="AutoPartCategoryId" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AutoPartManufacturers">
+            <EntityTypeMapping TypeName="APAM_DB_Model.AutoPartManufacturer">
+              <MappingFragment StoreEntitySet="AutoPartManufacturer">
+                <ScalarProperty Name="AutoPartManufacturerId" ColumnName="AutoPartManufacturerId" />
+                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bookkeepers">
+            <EntityTypeMapping TypeName="APAM_DB_Model.Bookkeeper">
+              <MappingFragment StoreEntitySet="Bookkeeper">
+                <ScalarProperty Name="BookkeeperId" ColumnName="BookkeeperId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BookkeeperContacts">
+            <EntityTypeMapping TypeName="APAM_DB_Model.BookkeeperContact">
+              <MappingFragment StoreEntitySet="BookkeeperContact">
+                <ScalarProperty Name="BookkeeperContactId" ColumnName="BookkeeperContactId" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="BookkeeperId" ColumnName="BookkeeperId" />
+                <ScalarProperty Name="ContactTypeId" ColumnName="ContactTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BookkeeperSalaries">
+            <EntityTypeMapping TypeName="APAM_DB_Model.BookkeeperSalary">
+              <MappingFragment StoreEntitySet="BookkeeperSalary">
+                <ScalarProperty Name="BookkeeperSalaryId" ColumnName="BookkeeperSalaryId" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+                <ScalarProperty Name="BookkeeperId" ColumnName="BookkeeperId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactTypes">
+            <EntityTypeMapping TypeName="APAM_DB_Model.ContactType">
+              <MappingFragment StoreEntitySet="ContactType">
+                <ScalarProperty Name="ContactTypeId" ColumnName="ContactTypeId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="APAM_DB_Model.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerContacts">
+            <EntityTypeMapping TypeName="APAM_DB_Model.CustomerContact">
+              <MappingFragment StoreEntitySet="CustomerContact">
+                <ScalarProperty Name="CusomerContactId" ColumnName="CusomerContactId" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="ContactTypeId" ColumnName="ContactTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="APAM_DB_Model.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="SellerId" ColumnName="SellerId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="AutoPartId" ColumnName="AutoPartId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="OrderStatusId" ColumnName="OrderStatusId" />
+                <ScalarProperty Name="OrderCreatedDateTime" ColumnName="OrderCreatedDateTime" />
+                <ScalarProperty Name="OrderFinishedDateTime" ColumnName="OrderFinishedDateTime" />
+                <ScalarProperty Name="From_AdressId" ColumnName="From_AdressId" />
+                <ScalarProperty Name="To_AdressId" ColumnName="To_AdressId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderStatus">
+            <EntityTypeMapping TypeName="APAM_DB_Model.OrderStatu">
+              <MappingFragment StoreEntitySet="OrderStatus">
+                <ScalarProperty Name="OrderStatusId" ColumnName="OrderStatusId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sellers">
+            <EntityTypeMapping TypeName="APAM_DB_Model.Seller">
+              <MappingFragment StoreEntitySet="Seller">
+                <ScalarProperty Name="SellerId" ColumnName="SellerId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SellerContacts">
+            <EntityTypeMapping TypeName="APAM_DB_Model.SellerContact">
+              <MappingFragment StoreEntitySet="SellerContact">
+                <ScalarProperty Name="SellerContactId" ColumnName="SellerContactId" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="SellerId" ColumnName="SellerId" />
+                <ScalarProperty Name="ContactTypeId" ColumnName="ContactTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SellerSalaries">
+            <EntityTypeMapping TypeName="APAM_DB_Model.SellerSalary">
+              <MappingFragment StoreEntitySet="SellerSalary">
+                <ScalarProperty Name="SellerSalaryId" ColumnName="SellerSalaryId" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+                <ScalarProperty Name="SellerId" ColumnName="SellerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

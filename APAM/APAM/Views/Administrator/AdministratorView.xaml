@@ -1,0 +1,127 @@
+﻿<UserControl x:Class="APAM.Views.AdministratorView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+        xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+        xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+        xmlns:dxdo="http://schemas.devexpress.com/winfx/2008/xaml/docking"
+        xmlns:dxrudex="http://schemas.devexpress.com/winfx/2008/xaml/reports/userdesignerextensions"
+        xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+        xmlns:viewModel="clr-namespace:APAM.ViewModels"
+        xmlns:view="clr-namespace:APAM.Views"
+        xmlns:localization="clr-namespace:APAM.Localization"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignHeight="400" d:DesignWidth="600" DataContext="{dxmvvm:ViewModelSource viewModel:AdministratorViewModel}">
+    <UserControl.Resources>
+        <ResourceDictionary Source="../../Resources/EntityViewResources.xaml" />
+    </UserControl.Resources>
+    <DockPanel Style="{StaticResource EntityView.RootContainer}">
+        <dxr:RibbonControl DockPanel.Dock="Top" Style="{StaticResource EntityView.RibbonControl}">
+            <dxr:RibbonDefaultPageCategory>
+                <dxr:RibbonPage Style="{StaticResource EntityView.RibbonPage}">
+                    <dxr:RibbonPageGroup Style="{StaticResource EntityView.RibbonPageGroup.Main}">
+                        <dxb:BarButtonItem Style="{StaticResource EntityView.Command.Save}" />
+                        <dxb:BarButtonItem Style="{StaticResource EntityView.Command.SaveAndClose}" />
+                        <dxb:BarButtonItem Style="{StaticResource EntityView.Command.SaveAndNew}" />
+                        <dxb:BarButtonItem Style="{StaticResource EntityView.Command.Reset}" />
+                        <dxb:BarButtonItem Style="{StaticResource EntityView.Command.Delete}" />
+                        <dxb:BarButtonItem Style="{StaticResource EntityView.Command.Close}" />
+                    </dxr:RibbonPageGroup>
+                    <dxr:RibbonPageGroup Style="{StaticResource EntityView.RibbonPageGroup.Layout}">
+                        <dxb:BarCheckItem Style="{StaticResource EntityView.Command.Customize}" IsChecked="{Binding IsCustomization, ElementName=layoutControl}" />
+                        <dxb:BarButtonItem Style="{StaticResource EntityView.Command.SaveLayout}" />
+                        <dxb:BarButtonItem Style="{StaticResource EntityView.Command.ResetLayout}" />
+                    </dxr:RibbonPageGroup>
+                </dxr:RibbonPage>
+            </dxr:RibbonDefaultPageCategory>
+        </dxr:RibbonControl>
+        <dxr:RibbonStatusBarControl DockPanel.Dock="Bottom" Style="{StaticResource EntityView.RibbonStatusBar}" />
+        <dxlc:LayoutControl x:Name="layoutControl" Style="{StaticResource EntityView.LayoutControl}">
+            <dxlc:DataLayoutItem x:Name="layoutItemAdministratorId" Binding="{Binding Entity.AdministratorId, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="{Binding DataContext.IsPrimaryKeyReadOnly, RelativeSource={RelativeSource AncestorType={x:Type dxlc:LayoutControl}}}" />
+            <dxlc:DataLayoutItem x:Name="layoutItemName" Binding="{Binding Entity.Name, UpdateSourceTrigger=PropertyChanged}" />
+            <dxlc:DataLayoutItem x:Name="layoutItemSurname" Binding="{Binding Entity.Surname, UpdateSourceTrigger=PropertyChanged}" />
+            <dxlc:DataLayoutItem x:Name="layoutItemMiddleName" Binding="{Binding Entity.MiddleName, UpdateSourceTrigger=PropertyChanged}" />
+            <dxlc:DataLayoutItem x:Name="layoutItemAdministratorType" Binding="{Binding Entity.AdministratorType, Mode=OneTime}">
+                <dxg:LookUpEdit Style="{StaticResource EntityView.LookUpEdit}" DataContext="{Binding ElementName=layoutControl, Path=DataContext}" EditValue="{Binding Entity.AdministratorTypeId, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True}" ItemsSource="{Binding LookUpAdministratorTypes.Entities}" ValueMember="AdministratorTypeId" DisplayMember="Type">
+                    <dxg:LookUpEdit.PopupContentTemplate>
+                        <ControlTemplate TargetType="ContentControl">
+                            <dxg:GridControl x:Name="PART_GridControl" ShowBorder="False" ShowLoadingPanel="{Binding LookUpAdministratorTypes.IsLoading}" />
+                        </ControlTemplate>
+                    </dxg:LookUpEdit.PopupContentTemplate>
+                </dxg:LookUpEdit>
+            </dxlc:DataLayoutItem>
+            <dxlc:LayoutGroup x:Name="Tabs" View="Tabs" MinHeight="250">
+                <DockPanel Style="{StaticResource EntityView.Detail.Container}" DataContext="{Binding AdministratorAdministratorContactsDetails}" dxlc:LayoutControl.TabHeader="{x:Static localization:APAM_DBEntitiesResources.AdministratorContactPlural}">
+                    <dxb:ToolBarControl DockPanel.Dock="Top">
+                        <dxb:BarButtonItem Style="{StaticResource EntityView.Detail.Command.New}" />
+                        <dxb:BarButtonItem Style="{StaticResource EntityView.Detail.Command.Edit}" />
+                        <dxb:BarButtonItem Style="{StaticResource EntityView.Detail.Command.Delete}" />
+                        <dxb:BarButtonItem Style="{StaticResource EntityView.Detail.Command.Refresh}" />
+                        <dxb:BarButtonItem Style="{StaticResource EntityView.Detail.Command.Save}" />
+                        <dxb:BarButtonItem Style="{StaticResource EntityView.Detail.Command.Reset}" />
+                    </dxb:ToolBarControl>
+                    <dxg:GridControl x:Name="AdministratorAdministratorContactsDetailsGrid" dx:DXSerializer.SerializationID="AdministratorAdministratorContactsDetailsGrid" Style="{StaticResource EntityView.Detail.GridControl.Editable}">
+                        <dxg:GridControl.View>
+                            <dxg:TableView Style="{StaticResource EntityView.Detail.TableView}">
+                                <dxg:TableView.RowCellMenuCustomizations>
+                                    <dxb:BarButtonItem Style="{StaticResource EntityView.Detail.GridCommand.New}" />
+                                    <dxb:BarButtonItem Style="{StaticResource EntityView.Detail.GridCommand.Edit}" />
+                                    <dxb:BarButtonItem Style="{StaticResource EntityView.Detail.GridCommand.Delete}" />
+                                    <dxb:BarButtonItem Style="{StaticResource EntityView.Detail.GridCommand.Refresh}" />
+                                </dxg:TableView.RowCellMenuCustomizations>
+                            </dxg:TableView>
+                        </dxg:GridControl.View>
+                        <dxg:GridControl.Columns>
+                            <dxg:GridColumn IsSmart="True" FieldName="AdministratorContactId" />
+                            <dxg:GridColumn IsSmart="True" FieldName="Value" />
+                            <dxg:GridColumn FieldName="ContactType.Type" Header="{x:Static localization:APAM_DBEntitiesResources.AdministratorContact_ContactType}" ReadOnly="True" />
+                        </dxg:GridControl.Columns>
+                        <dxg:GridControl.TotalSummary>
+                            <dxg:GridSummaryItem SummaryType="Count" Alignment="Right" />
+                        </dxg:GridControl.TotalSummary>
+                        <dxg:GridControl.GroupSummary>
+                            <dxg:GridSummaryItem SummaryType="Count" />
+                        </dxg:GridControl.GroupSummary>
+                    </dxg:GridControl>
+                </DockPanel>
+                <DockPanel Style="{StaticResource EntityView.Detail.Container}" DataContext="{Binding AdministratorAdministratorSalariesDetails}" dxlc:LayoutControl.TabHeader="{x:Static localization:APAM_DBEntitiesResources.AdministratorSalaryPlural}">
+                    <dxb:ToolBarControl DockPanel.Dock="Top">
+                        <dxb:BarButtonItem Style="{StaticResource EntityView.Detail.Command.New}" />
+                        <dxb:BarButtonItem Style="{StaticResource EntityView.Detail.Command.Edit}" />
+                        <dxb:BarButtonItem Style="{StaticResource EntityView.Detail.Command.Delete}" />
+                        <dxb:BarButtonItem Style="{StaticResource EntityView.Detail.Command.Refresh}" />
+                        <dxb:BarButtonItem Style="{StaticResource EntityView.Detail.Command.Save}" />
+                        <dxb:BarButtonItem Style="{StaticResource EntityView.Detail.Command.Reset}" />
+                    </dxb:ToolBarControl>
+                    <dxg:GridControl x:Name="AdministratorAdministratorSalariesDetailsGrid" dx:DXSerializer.SerializationID="AdministratorAdministratorSalariesDetailsGrid" Style="{StaticResource EntityView.Detail.GridControl.Editable}">
+                        <dxg:GridControl.View>
+                            <dxg:TableView Style="{StaticResource EntityView.Detail.TableView}">
+                                <dxg:TableView.RowCellMenuCustomizations>
+                                    <dxb:BarButtonItem Style="{StaticResource EntityView.Detail.GridCommand.New}" />
+                                    <dxb:BarButtonItem Style="{StaticResource EntityView.Detail.GridCommand.Edit}" />
+                                    <dxb:BarButtonItem Style="{StaticResource EntityView.Detail.GridCommand.Delete}" />
+                                    <dxb:BarButtonItem Style="{StaticResource EntityView.Detail.GridCommand.Refresh}" />
+                                </dxg:TableView.RowCellMenuCustomizations>
+                            </dxg:TableView>
+                        </dxg:GridControl.View>
+                        <dxg:GridControl.Columns>
+                            <dxg:GridColumn IsSmart="True" FieldName="AdministratorSalaryId" />
+                            <dxg:GridColumn IsSmart="True" FieldName="Salary" />
+                            <dxg:GridColumn IsSmart="True" FieldName="IssueDate" />
+                        </dxg:GridControl.Columns>
+                        <dxg:GridControl.TotalSummary>
+                            <dxg:GridSummaryItem SummaryType="Count" Alignment="Right" />
+                        </dxg:GridControl.TotalSummary>
+                        <dxg:GridControl.GroupSummary>
+                            <dxg:GridSummaryItem SummaryType="Count" />
+                        </dxg:GridControl.GroupSummary>
+                    </dxg:GridControl>
+                </DockPanel>
+            </dxlc:LayoutGroup>
+        </dxlc:LayoutControl>
+    </DockPanel>
+</UserControl>

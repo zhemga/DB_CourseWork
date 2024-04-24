@@ -1,0 +1,638 @@
+﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{144670CB-6396-488C-A76D-2E03A3B69E78}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>APAM</RootNamespace>
+    <AssemblyName>APAM</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Images.v21.2, Version=21.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Mvvm.v21.2" />
+    <Reference Include="DevExpress.Data.Desktop.v21.2" />
+    <Reference Include="DevExpress.Data.v21.2" />
+    <Reference Include="DevExpress.Mvvm.v21.2.DataModel, Version=21.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Mvvm.v21.2.DataModel.EF6, Version=21.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Mvvm.v21.2.ViewModel, Version=21.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v21.2.Core" />
+    <Reference Include="DevExpress.Xpf.Accordion.v21.2, Version=21.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Controls.v21.2, Version=21.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Core.v21.2" />
+    <Reference Include="DevExpress.Xpf.Docking.v21.2, Version=21.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Grid.v21.2, Version=21.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Grid.v21.2.Core, Version=21.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Layout.v21.2.Core, Version=21.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.LayoutControl.v21.2, Version=21.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Printing.v21.2, Version=21.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.ReportDesigner.v21.2, Version=21.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Ribbon.v21.2, Version=21.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Themes.Office2019Colorful.v21.2" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Address.cs">
+      <DependentUpon>ModelAPAM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator.cs">
+      <DependentUpon>ModelAPAM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AdministratorContact.cs">
+      <DependentUpon>ModelAPAM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AdministratorSalary.cs">
+      <DependentUpon>ModelAPAM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AdministratorType.cs">
+      <DependentUpon>ModelAPAM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APAM_DBEntitiesDataModel\APAM_DBEntitiesMetadata.cs" />
+    <Compile Include="APAM_DBEntitiesDataModel\APAM_DBEntitiesUnitOfWork.cs" />
+    <Compile Include="APAM_DBEntitiesDataModel\DesignTimeAPAM_DBEntitiesUnitOfWork.cs" />
+    <Compile Include="APAM_DBEntitiesDataModel\IAPAM_DBEntitiesUnitOfWork.cs" />
+    <Compile Include="APAM_DBEntitiesDataModel\UnitOfWorkSource.cs" />
+    <Compile Include="AutoPart.cs">
+      <DependentUpon>ModelAPAM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AutoPartCarModel.cs">
+      <DependentUpon>ModelAPAM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AutoPartCategory.cs">
+      <DependentUpon>ModelAPAM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AutoPartManufacturer.cs">
+      <DependentUpon>ModelAPAM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Bookkeeper.cs">
+      <DependentUpon>ModelAPAM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BookkeeperContact.cs">
+      <DependentUpon>ModelAPAM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BookkeeperSalary.cs">
+      <DependentUpon>ModelAPAM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Common\CollectionViewModel.cs" />
+    <Compile Include="Common\EntitiesViewModel.cs" />
+    <Compile Include="Common\InstantFeedbackCollectionViewModel.cs" />
+    <Compile Include="Common\ReadOnlyCollectionViewModel.cs" />
+    <Compile Include="Common\SingleObjectViewModel.cs" />
+    <Compile Include="ContactType.cs">
+      <DependentUpon>ModelAPAM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Customer.cs">
+      <DependentUpon>ModelAPAM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerContact.cs">
+      <DependentUpon>ModelAPAM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Localization\APAM_DBEntitiesResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>APAM_DBEntitiesResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Localization\ViewResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ViewResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ModelAPAM.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelAPAM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Order.cs">
+      <DependentUpon>ModelAPAM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderStatu.cs">
+      <DependentUpon>ModelAPAM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Seller.cs">
+      <DependentUpon>ModelAPAM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SellerContact.cs">
+      <DependentUpon>ModelAPAM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SellerSalary.cs">
+      <DependentUpon>ModelAPAM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Address\AddressCollectionViewModel.cs" />
+    <Compile Include="ViewModels\Address\AddressViewModel.cs" />
+    <Compile Include="ViewModels\AdministratorContact\AdministratorContactCollectionViewModel.cs" />
+    <Compile Include="ViewModels\AdministratorContact\AdministratorContactViewModel.cs" />
+    <Compile Include="ViewModels\AdministratorSalary\AdministratorSalaryCollectionViewModel.cs" />
+    <Compile Include="ViewModels\AdministratorSalary\AdministratorSalaryViewModel.cs" />
+    <Compile Include="ViewModels\AdministratorType\AdministratorTypeCollectionViewModel.cs" />
+    <Compile Include="ViewModels\AdministratorType\AdministratorTypeViewModel.cs" />
+    <Compile Include="ViewModels\Administrator\AdministratorCollectionViewModel.cs" />
+    <Compile Include="ViewModels\Administrator\AdministratorViewModel.cs" />
+    <Compile Include="ViewModels\APAM_DBEntitiesViewModel.cs" />
+    <Compile Include="ViewModels\AutoPartCarModel\AutoPartCarModelCollectionViewModel.cs" />
+    <Compile Include="ViewModels\AutoPartCarModel\AutoPartCarModelViewModel.cs" />
+    <Compile Include="ViewModels\AutoPartCategory\AutoPartCategoryCollectionViewModel.cs" />
+    <Compile Include="ViewModels\AutoPartCategory\AutoPartCategoryViewModel.cs" />
+    <Compile Include="ViewModels\AutoPartManufacturer\AutoPartManufacturerCollectionViewModel.cs" />
+    <Compile Include="ViewModels\AutoPartManufacturer\AutoPartManufacturerViewModel.cs" />
+    <Compile Include="ViewModels\AutoPart\AutoPartCollectionViewModel.cs" />
+    <Compile Include="ViewModels\AutoPart\AutoPartViewModel.cs" />
+    <Compile Include="ViewModels\BookkeeperContact\BookkeeperContactCollectionViewModel.cs" />
+    <Compile Include="ViewModels\BookkeeperContact\BookkeeperContactViewModel.cs" />
+    <Compile Include="ViewModels\BookkeeperSalary\BookkeeperSalaryCollectionViewModel.cs" />
+    <Compile Include="ViewModels\BookkeeperSalary\BookkeeperSalaryViewModel.cs" />
+    <Compile Include="ViewModels\Bookkeeper\BookkeeperCollectionViewModel.cs" />
+    <Compile Include="ViewModels\Bookkeeper\BookkeeperViewModel.cs" />
+    <Compile Include="ViewModels\ContactType\ContactTypeCollectionViewModel.cs" />
+    <Compile Include="ViewModels\ContactType\ContactTypeViewModel.cs" />
+    <Compile Include="ViewModels\CustomerContact\CustomerContactCollectionViewModel.cs" />
+    <Compile Include="ViewModels\CustomerContact\CustomerContactViewModel.cs" />
+    <Compile Include="ViewModels\Customer\CustomerCollectionViewModel.cs" />
+    <Compile Include="ViewModels\Customer\CustomerViewModel.cs" />
+    <Compile Include="ViewModels\OrderStatu\OrderStatuCollectionViewModel.cs" />
+    <Compile Include="ViewModels\OrderStatu\OrderStatuViewModel.cs" />
+    <Compile Include="ViewModels\Order\OrderCollectionViewModel.cs" />
+    <Compile Include="ViewModels\Order\OrderViewModel.cs" />
+    <Compile Include="ViewModels\SellerContact\SellerContactCollectionViewModel.cs" />
+    <Compile Include="ViewModels\SellerContact\SellerContactViewModel.cs" />
+    <Compile Include="ViewModels\SellerSalary\SellerSalaryCollectionViewModel.cs" />
+    <Compile Include="ViewModels\SellerSalary\SellerSalaryViewModel.cs" />
+    <Compile Include="ViewModels\Seller\SellerCollectionViewModel.cs" />
+    <Compile Include="ViewModels\Seller\SellerViewModel.cs" />
+    <Compile Include="Views\Address\AddressCollectionView.xaml.cs">
+      <DependentUpon>AddressCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Address\AddressView.xaml.cs">
+      <DependentUpon>AddressView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdministratorContact\AdministratorContactCollectionView.xaml.cs">
+      <DependentUpon>AdministratorContactCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdministratorContact\AdministratorContactView.xaml.cs">
+      <DependentUpon>AdministratorContactView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdministratorSalary\AdministratorSalaryCollectionView.xaml.cs">
+      <DependentUpon>AdministratorSalaryCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdministratorSalary\AdministratorSalaryView.xaml.cs">
+      <DependentUpon>AdministratorSalaryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdministratorType\AdministratorTypeCollectionView.xaml.cs">
+      <DependentUpon>AdministratorTypeCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdministratorType\AdministratorTypeView.xaml.cs">
+      <DependentUpon>AdministratorTypeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administrator\AdministratorCollectionView.xaml.cs">
+      <DependentUpon>AdministratorCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administrator\AdministratorView.xaml.cs">
+      <DependentUpon>AdministratorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\APAM_DBEntitiesView.xaml.cs">
+      <DependentUpon>APAM_DBEntitiesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AutoPartCarModel\AutoPartCarModelCollectionView.xaml.cs">
+      <DependentUpon>AutoPartCarModelCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AutoPartCarModel\AutoPartCarModelView.xaml.cs">
+      <DependentUpon>AutoPartCarModelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AutoPartCategory\AutoPartCategoryCollectionView.xaml.cs">
+      <DependentUpon>AutoPartCategoryCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AutoPartCategory\AutoPartCategoryView.xaml.cs">
+      <DependentUpon>AutoPartCategoryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AutoPartManufacturer\AutoPartManufacturerCollectionView.xaml.cs">
+      <DependentUpon>AutoPartManufacturerCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AutoPartManufacturer\AutoPartManufacturerView.xaml.cs">
+      <DependentUpon>AutoPartManufacturerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AutoPart\AutoPartCollectionView.xaml.cs">
+      <DependentUpon>AutoPartCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AutoPart\AutoPartView.xaml.cs">
+      <DependentUpon>AutoPartView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BookkeeperContact\BookkeeperContactCollectionView.xaml.cs">
+      <DependentUpon>BookkeeperContactCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BookkeeperContact\BookkeeperContactView.xaml.cs">
+      <DependentUpon>BookkeeperContactView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BookkeeperSalary\BookkeeperSalaryCollectionView.xaml.cs">
+      <DependentUpon>BookkeeperSalaryCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BookkeeperSalary\BookkeeperSalaryView.xaml.cs">
+      <DependentUpon>BookkeeperSalaryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Bookkeeper\BookkeeperCollectionView.xaml.cs">
+      <DependentUpon>BookkeeperCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Bookkeeper\BookkeeperView.xaml.cs">
+      <DependentUpon>BookkeeperView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ContactType\ContactTypeCollectionView.xaml.cs">
+      <DependentUpon>ContactTypeCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ContactType\ContactTypeView.xaml.cs">
+      <DependentUpon>ContactTypeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CustomerContact\CustomerContactCollectionView.xaml.cs">
+      <DependentUpon>CustomerContactCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CustomerContact\CustomerContactView.xaml.cs">
+      <DependentUpon>CustomerContactView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customer\CustomerCollectionView.xaml.cs">
+      <DependentUpon>CustomerCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customer\CustomerView.xaml.cs">
+      <DependentUpon>CustomerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OrderStatu\OrderStatuCollectionView.xaml.cs">
+      <DependentUpon>OrderStatuCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OrderStatu\OrderStatuView.xaml.cs">
+      <DependentUpon>OrderStatuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Order\OrderCollectionView.xaml.cs">
+      <DependentUpon>OrderCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Order\OrderView.xaml.cs">
+      <DependentUpon>OrderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PeekCollectionView.xaml.cs">
+      <DependentUpon>PeekCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SellerContact\SellerContactCollectionView.xaml.cs">
+      <DependentUpon>SellerContactCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SellerContact\SellerContactView.xaml.cs">
+      <DependentUpon>SellerContactView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SellerSalary\SellerSalaryCollectionView.xaml.cs">
+      <DependentUpon>SellerSalaryCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SellerSalary\SellerSalaryView.xaml.cs">
+      <DependentUpon>SellerSalaryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Seller\SellerCollectionView.xaml.cs">
+      <DependentUpon>SellerCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Seller\SellerView.xaml.cs">
+      <DependentUpon>SellerView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Resources\CollectionViewResources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\EntityViewResources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Address\AddressCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Address\AddressView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AdministratorContact\AdministratorContactCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AdministratorContact\AdministratorContactView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AdministratorSalary\AdministratorSalaryCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AdministratorSalary\AdministratorSalaryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AdministratorType\AdministratorTypeCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AdministratorType\AdministratorTypeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Administrator\AdministratorCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Administrator\AdministratorView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\APAM_DBEntitiesView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AutoPartCarModel\AutoPartCarModelCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AutoPartCarModel\AutoPartCarModelView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AutoPartCategory\AutoPartCategoryCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AutoPartCategory\AutoPartCategoryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AutoPartManufacturer\AutoPartManufacturerCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AutoPartManufacturer\AutoPartManufacturerView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AutoPart\AutoPartCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AutoPart\AutoPartView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\BookkeeperContact\BookkeeperContactCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\BookkeeperContact\BookkeeperContactView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\BookkeeperSalary\BookkeeperSalaryCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\BookkeeperSalary\BookkeeperSalaryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Bookkeeper\BookkeeperCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Bookkeeper\BookkeeperView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ContactType\ContactTypeCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ContactType\ContactTypeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\CustomerContact\CustomerContactCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\CustomerContact\CustomerContactView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Customer\CustomerCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Customer\CustomerView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\OrderStatu\OrderStatuCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\OrderStatu\OrderStatuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Order\OrderCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Order\OrderView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PeekCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SellerContact\SellerContactCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SellerContact\SellerContactView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SellerSalary\SellerSalaryCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SellerSalary\SellerSalaryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Seller\SellerCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Seller\SellerView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ModelAPAM.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelAPAM.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelAPAM.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelAPAM.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Localization\APAM_DBEntitiesResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>APAM_DBEntitiesResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>APAM.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\ViewResources.de-DE.resx" />
+    <EmbeddedResource Include="Localization\ViewResources.es-ES.resx" />
+    <EmbeddedResource Include="Localization\ViewResources.ja-JP.resx" />
+    <EmbeddedResource Include="Localization\ViewResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ViewResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>APAM.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\ViewResources.ru-RU.resx" />
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="App.config" />
+    <EntityDeploy Include="ModelAPAM.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelAPAM.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ModelAPAM.edmx.diagram">
+      <DependentUpon>ModelAPAM.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ModelAPAM.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelAPAM.Context.cs</LastGenOutput>
+      <DependentUpon>ModelAPAM.edmx</DependentUpon>
+    </Content>
+    <Content Include="ModelAPAM.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelAPAM.edmx</DependentUpon>
+      <LastGenOutput>ModelAPAM.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
