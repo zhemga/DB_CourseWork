@@ -1823,6 +1823,33 @@ namespace APAM.Common
                 }
             }
 
+            if (!context.Orders.Any())
+            {
+                for (int i = 0; i < 3000; i++)
+                {
+                    var newItem = new Order
+                    {
+                        OrderStatusId = context.OrderStatus.ToList().ElementAt(random.Next(context.OrderStatus.Count())).OrderStatusId,
+                        AutoPartId = context.AutoParts.ToList().ElementAt(random.Next(context.AutoParts.Count())).AutoPartId,
+                        SellerId = context.Sellers.ToList().ElementAt(random.Next(context.Sellers.Count())).SellerId,
+                        CustomerId = context.Customers.ToList().ElementAt(random.Next(context.Customers.Count())).CustomerId,
+                        From_AdressId = context.Addresses.ToList().ElementAt(random.Next(context.Addresses.Count())).AdressId,
+                        To_AdressId = context.Addresses.ToList().ElementAt(random.Next(context.Addresses.Count())).AdressId,
+                        OrderCreatedDateTime = DateTime.Now.AddDays(-i - 2),
+                        OrderFinishedDateTime = DateTime.Now.AddDays(-i - 1)
+                    };
+
+                    try
+                    {
+                        context.Orders.Add(newItem);
+                        context.SaveChanges();
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+                }
+            }
         }
 
         private static string GetEmbeddedResource(string namespacename, string filename)

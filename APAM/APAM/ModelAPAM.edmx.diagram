@@ -4,27 +4,27 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="39650c77d53e4d638676f87d1e615657" Name="Diagram1">
-        <EntityTypeShape EntityType="APAM_DB_Model.Address" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+      <Diagram DiagramId="28cd1c215c984a2a99cf6cc2bc49d66e" Name="Diagram1">
+        <EntityTypeShape EntityType="APAM_DB_Model.Address" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
         <EntityTypeShape EntityType="APAM_DB_Model.Administrator" Width="1.5" PointX="11" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="APAM_DB_Model.AdministratorContact" Width="1.5" PointX="13.25" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="APAM_DB_Model.AdministratorContact" Width="1.5" PointX="13.25" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="APAM_DB_Model.AdministratorSalary" Width="1.5" PointX="13.25" PointY="5.5" IsExpanded="true" />
         <EntityTypeShape EntityType="APAM_DB_Model.AdministratorType" Width="1.5" PointX="8.75" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="APAM_DB_Model.AutoPart" Width="1.5" PointX="0.75" PointY="16" IsExpanded="true" />
-        <EntityTypeShape EntityType="APAM_DB_Model.AutoPartCarModel" Width="1.5" PointX="1.5" PointY="20.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="APAM_DB_Model.AutoPartCategory" Width="1.5" PointX="1.5" PointY="22.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="APAM_DB_Model.AutoPartManufacturer" Width="1.5" PointX="1.5" PointY="25.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="APAM_DB_Model.Bookkeeper" Width="1.5" PointX="3.75" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="APAM_DB_Model.BookkeeperContact" Width="1.5" PointX="6" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="APAM_DB_Model.BookkeeperSalary" Width="1.5" PointX="6" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="APAM_DB_Model.ContactType" Width="1.5" PointX="3.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="APAM_DB_Model.Customer" Width="1.5" PointX="0.75" PointY="27.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="APAM_DB_Model.AutoPart" Width="1.5" PointX="0.75" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="APAM_DB_Model.AutoPartCarModel" Width="1.5" PointX="1.5" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="APAM_DB_Model.AutoPartCategory" Width="1.5" PointX="1.5" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="APAM_DB_Model.AutoPartManufacturer" Width="1.5" PointX="1.5" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="APAM_DB_Model.Bookkeeper" Width="1.5" PointX="3.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="APAM_DB_Model.BookkeeperContact" Width="1.5" PointX="6" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="APAM_DB_Model.BookkeeperSalary" Width="1.5" PointX="6" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="APAM_DB_Model.ContactType" Width="1.5" PointX="3.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="APAM_DB_Model.Customer" Width="1.5" PointX="0.75" PointY="27.5" IsExpanded="true" />
         <EntityTypeShape EntityType="APAM_DB_Model.CustomerContact" Width="1.5" PointX="6" PointY="14.375" IsExpanded="true" />
         <EntityTypeShape EntityType="APAM_DB_Model.Order" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
         <EntityTypeShape EntityType="APAM_DB_Model.OrderStatu" Width="1.5" PointX="0.75" PointY="30.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="APAM_DB_Model.Seller" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="APAM_DB_Model.SellerContact" Width="1.5" PointX="6" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="APAM_DB_Model.SellerSalary" Width="1.5" PointX="3" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="APAM_DB_Model.Seller" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="APAM_DB_Model.SellerContact" Width="1.5" PointX="6" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="APAM_DB_Model.SellerSalary" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
         <AssociationConnector Association="APAM_DB_Model.FK_Order_From_Address" ManuallyRouted="false" />
         <AssociationConnector Association="APAM_DB_Model.FK_Order_To_Address" ManuallyRouted="false" />
         <AssociationConnector Association="APAM_DB_Model.FK_Administrator_AdministratorType" ManuallyRouted="false" />

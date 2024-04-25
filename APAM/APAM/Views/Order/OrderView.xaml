@@ -42,7 +42,6 @@
         <dxr:RibbonStatusBarControl DockPanel.Dock="Bottom" Style="{StaticResource EntityView.RibbonStatusBar}" />
         <dxlc:LayoutControl x:Name="layoutControl" Style="{StaticResource EntityView.LayoutControl}">
             <dxlc:DataLayoutItem x:Name="layoutItemOrderId" Binding="{Binding Entity.OrderId, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="{Binding DataContext.IsPrimaryKeyReadOnly, RelativeSource={RelativeSource AncestorType={x:Type dxlc:LayoutControl}}}" />
-            <dxlc:DataLayoutItem x:Name="layoutItemDate" Binding="{Binding Entity.Date, UpdateSourceTrigger=PropertyChanged}" />
             <dxlc:DataLayoutItem x:Name="layoutItemOrderCreatedDateTime" Binding="{Binding Entity.OrderCreatedDateTime, UpdateSourceTrigger=PropertyChanged}" />
             <dxlc:DataLayoutItem x:Name="layoutItemOrderFinishedDateTime" Binding="{Binding Entity.OrderFinishedDateTime, UpdateSourceTrigger=PropertyChanged}" />
             <dxlc:DataLayoutItem x:Name="layoutItemAddress" Binding="{Binding Entity.Address, Mode=OneTime}">

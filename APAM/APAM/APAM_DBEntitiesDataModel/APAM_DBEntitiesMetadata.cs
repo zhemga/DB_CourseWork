@@ -115,7 +115,6 @@ namespace APAM.APAM_DBEntitiesDataModel {
 		        public static void BuildMetadata(MetadataBuilder<Order> builder) {
 			builder.DisplayName(APAM_DBEntitiesResources.Order);
 						builder.Property(x => x.OrderId).DisplayName(APAM_DBEntitiesResources.Order_OrderId);
-						builder.Property(x => x.Date).DisplayName(APAM_DBEntitiesResources.Order_Date);
 						builder.Property(x => x.OrderCreatedDateTime).DisplayName(APAM_DBEntitiesResources.Order_OrderCreatedDateTime);
 						builder.Property(x => x.OrderFinishedDateTime).DisplayName(APAM_DBEntitiesResources.Order_OrderFinishedDateTime);
 						builder.Property(x => x.Address).DisplayName(APAM_DBEntitiesResources.Order_Address);

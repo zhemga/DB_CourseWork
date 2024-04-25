@@ -150,7 +150,6 @@
           <Property Name="SellerId" Type="int" Nullable="false" />
           <Property Name="CustomerId" Type="int" Nullable="false" />
           <Property Name="AutoPartId" Type="int" Nullable="false" />
-          <Property Name="Date" Type="datetime" Nullable="false" />
           <Property Name="OrderStatusId" Type="int" Nullable="false" />
           <Property Name="OrderCreatedDateTime" Type="datetime2" Precision="7" />
           <Property Name="OrderFinishedDateTime" Type="datetime2" Precision="7" />
@@ -728,7 +727,6 @@
           <Property Name="SellerId" Type="Int32" Nullable="false" />
           <Property Name="CustomerId" Type="Int32" Nullable="false" />
           <Property Name="AutoPartId" Type="Int32" Nullable="false" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="OrderStatusId" Type="Int32" Nullable="false" />
           <Property Name="OrderCreatedDateTime" Type="DateTime" Precision="7" />
           <Property Name="OrderFinishedDateTime" Type="DateTime" Precision="7" />
@@ -1305,7 +1303,6 @@
                 <ScalarProperty Name="SellerId" ColumnName="SellerId" />
                 <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
                 <ScalarProperty Name="AutoPartId" ColumnName="AutoPartId" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="OrderStatusId" ColumnName="OrderStatusId" />
                 <ScalarProperty Name="OrderCreatedDateTime" ColumnName="OrderCreatedDateTime" />
                 <ScalarProperty Name="OrderFinishedDateTime" ColumnName="OrderFinishedDateTime" />

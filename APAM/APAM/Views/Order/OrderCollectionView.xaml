@@ -60,7 +60,6 @@
             </dxg:GridControl.View>
             <dxg:GridControl.Columns>
                 <dxg:GridColumn IsSmart="True" FieldName="OrderId" />
-                <dxg:GridColumn IsSmart="True" FieldName="Date" />
                 <dxg:GridColumn IsSmart="True" FieldName="OrderCreatedDateTime" />
                 <dxg:GridColumn IsSmart="True" FieldName="OrderFinishedDateTime" />
                 <dxg:GridColumn FieldName="Address.Street" Header="{x:Static localization:APAM_DBEntitiesResources.Order_Address}" ReadOnly="True" />

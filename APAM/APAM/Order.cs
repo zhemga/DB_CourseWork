@@ -11,23 +11,20 @@ namespace APAM
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Order
     {
         public int OrderId { get; set; }
         public int SellerId { get; set; }
         public int CustomerId { get; set; }
         public int AutoPartId { get; set; }
-        public System.DateTime Date { get; set; }
         public int OrderStatusId { get; set; }
         public Nullable<System.DateTime> OrderCreatedDateTime { get; set; }
         public Nullable<System.DateTime> OrderFinishedDateTime { get; set; }
         public int From_AdressId { get; set; }
         public int To_AdressId { get; set; }
-
+    
         public virtual Address Address { get; set; }
-
         public virtual Address Address1 { get; set; }
         public virtual AutoPart AutoPart { get; set; }
         public virtual Customer Customer { get; set; }

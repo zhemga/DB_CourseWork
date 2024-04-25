@@ -182,10 +182,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ViewResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ModelAPAM.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelAPAM.Context.tt</DependentUpon>
+    </Compile>
     <Compile Include="ModelAPAM.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelAPAM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelAPAM.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelAPAM.edmx</DependentUpon>
     </Compile>
     <Compile Include="Order.cs">
       <DependentUpon>ModelAPAM.tt</DependentUpon>
@@ -559,16 +569,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ModelAPAM.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelAPAM.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelAPAM.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelAPAM.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -629,10 +629,13 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="ModelAPAM.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ModelAPAM.Context.cs</LastGenOutput>
       <DependentUpon>ModelAPAM.edmx</DependentUpon>
+      <LastGenOutput>ModelAPAM.Context.cs</LastGenOutput>
     </Content>
     <Content Include="ModelAPAM.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -640,10 +643,6 @@
       <LastGenOutput>ModelAPAM.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

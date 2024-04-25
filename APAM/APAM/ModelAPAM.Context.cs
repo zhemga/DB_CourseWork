@@ -10,19 +10,15 @@
 namespace APAM
 {
     using APAM.Common;
-    using Newtonsoft.Json;
     using System;
-    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using System.IO;
-
+    
     public partial class APAM_DBEntities : DbContext
     {
         public APAM_DBEntities()
             : base("name=APAM_DBEntities")
         {
-            var boolis = File.Exists("Resources/Addresses.json");
             DataSeeder.Seed(this);
         }
     
