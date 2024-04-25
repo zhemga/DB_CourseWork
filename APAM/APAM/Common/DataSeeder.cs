@@ -1747,6 +1747,82 @@ namespace APAM.Common
                 }
 
             }
+
+            if (!context.AdministratorSalaries.Any())
+            {
+                var ppl = context.Administrators.ToList();
+
+                foreach (var item in ppl)
+                {
+                    for (int i = 0; i < 20; ++i)
+                    {
+                        try
+                        {
+                            context.AdministratorSalaries.Add(new AdministratorSalary
+                            {
+                                Salary = random.Next(1500, 7000),
+                                IssueDate = DateTime.Now.AddDays(-i * 30),
+                                AdministratorId = item.AdministratorId
+                            });
+                            context.SaveChanges();
+                        }
+                        catch (Exception)
+                        {
+                        }
+                    }
+                }
+            }
+
+            if (!context.BookkeeperSalaries.Any())
+            {
+                var ppl = context.Bookkeepers.ToList();
+
+                foreach (var item in ppl)
+                {
+                    for (int i = 0; i < 20; ++i)
+                    {
+                        try
+                        {
+                            context.BookkeeperSalaries.Add(new BookkeeperSalary
+                            {
+                                Salary = random.Next(1700, 3000),
+                                IssueDate = DateTime.Now.AddDays(-i * 30),
+                                BookkeeperId = item.BookkeeperId
+                            });
+                            context.SaveChanges();
+                        }
+                        catch (Exception)
+                        {
+                        }
+                    }
+                }
+            }
+
+            if (!context.SellerSalaries.Any())
+            {
+                var ppl = context.Sellers.ToList();
+
+                foreach (var item in ppl)
+                {
+                    for (int i = 0; i < 20; ++i)
+                    {
+                        try
+                        {
+                            context.SellerSalaries.Add(new SellerSalary
+                            {
+                                Salary = random.Next(2000, 9000),
+                                IssueDate = DateTime.Now.AddDays(-i * 30),
+                                SellerId = item.SellerId
+                            });
+                            context.SaveChanges();
+                        }
+                        catch (Exception)
+                        {
+                        }
+                    }
+                }
+            }
+
         }
 
         private static string GetEmbeddedResource(string namespacename, string filename)
