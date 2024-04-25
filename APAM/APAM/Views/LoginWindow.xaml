@@ -1,7 +1,8 @@
-﻿<Window x:Class="APAM.Views.LoginWindow"
+﻿<dx:ThemedWindow x:Class="APAM.Views.LoginWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:APAM.Views"
         mc:Ignorable="d"
@@ -12,10 +13,10 @@
 
         <Label Content="Login:"/>
         <TextBox Name="txtLogin"/>
-        
+
         <Label Content="Password:"/>
         <PasswordBox Name="txtPassword"/>
 
         <Button Content="Login"  Margin="0,20,0,0" Click="OnLogin"/>
     </StackPanel>
-</Window>
+</dx:ThemedWindow>

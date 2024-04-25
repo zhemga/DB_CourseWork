@@ -1,4 +1,5 @@
 ﻿using APAM.Common;
+using DevExpress.Xpf.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace APAM.Views
     /// <summary>
     /// Interaction logic for LoginWindow.xaml
     /// </summary>
-    public partial class LoginWindow : Window
+    public partial class LoginWindow : ThemedWindow
     {
         private MainWindow _mainWindow;
         private bool _isSuccesful = false;
