@@ -14,9 +14,11 @@ namespace APAM.Common
 
         public static void Seed(APAM_DBEntities context)
         {
-            var random = new Random();
+            if (UserData.IsAdmin)
+            {
+                var random = new Random();
 
-            var names = new string[] {
+                var names = new string[] {
     "Rachel"
     ,
     "Vernon"
@@ -217,7 +219,7 @@ namespace APAM.Common
     ,
     "Destiny"
 };
-            var surnames = new string[] {
+                var surnames = new string[] {
     "Dorsey"
     ,
     "Moran"
@@ -418,7 +420,7 @@ namespace APAM.Common
     ,
     "Neal"
 };
-            var middleNames = new string[] {
+                var middleNames = new string[] {
     "Elliott"
     ,
     "Carson"
@@ -619,7 +621,7 @@ namespace APAM.Common
     ,
     "Bradley"
 };
-            var nickNames = new string[] {
+                var nickNames = new string[] {
     "ut"
     ,
     "erat"
@@ -820,7 +822,7 @@ namespace APAM.Common
     ,
     "consectetuer"
 };
-            var phones = new string[] {
+                var phones = new string[] {
     "(068) 16161120"
     ,
     "(052) 59655137"
@@ -1021,7 +1023,7 @@ namespace APAM.Common
     ,
     "(022) 50284870"
 };
-            var emails = new string[] {
+                var emails = new string[] {
     "eu.eleifend@outlook.org"
     ,
     "dictum@yahoo.com"
@@ -1223,96 +1225,96 @@ namespace APAM.Common
     "at.fringilla.purus@hotmail.edu"
 };
 
-            if (!context.Addresses.Any())
-            {
-                var list = JsonConvert.DeserializeObject<List<Address>>(GetEmbeddedResource(ADDRESSES_RESOURCES_PATH, "Addresses.json"));
-
-                foreach (var newItem in list)
+                if (!context.Addresses.Any())
                 {
-                    try
+                    var list = JsonConvert.DeserializeObject<List<Address>>(GetEmbeddedResource(ADDRESSES_RESOURCES_PATH, "Addresses.json"));
+
+                    foreach (var newItem in list)
                     {
-                        context.Addresses.Add(newItem);
-                        context.SaveChanges();
-                    }
-                    catch (Exception) { }
-                }
-            }
-
-            if (!context.AutoPartCarModels.Any())
-            {
-                var list = JsonConvert.DeserializeObject<List<AutoPartCarModel>>(GetEmbeddedResource(ADDRESSES_RESOURCES_PATH, "AutoPartCarModels.json"));
-
-                foreach (var newItem in list)
-                {
-                    try
-                    {
-                        context.AutoPartCarModels.Add(newItem);
-                        context.SaveChanges();
-                    }
-                    catch (Exception) { }
-                }
-            }
-
-            if (!context.AutoPartCategories.Any())
-            {
-                var list = JsonConvert.DeserializeObject<List<AutoPartCategory>>(GetEmbeddedResource(ADDRESSES_RESOURCES_PATH, "AutoPartCategories.json"));
-
-                foreach (var newItem in list)
-                {
-                    try
-                    {
-                        context.AutoPartCategories.Add(newItem);
-                        context.SaveChanges();
-                    }
-                    catch (Exception) { }
-                }
-            }
-
-            if (!context.AutoPartManufacturers.Any())
-            {
-                var list = JsonConvert.DeserializeObject<List<AutoPartManufacturer>>(GetEmbeddedResource(ADDRESSES_RESOURCES_PATH, "AutoPartManufacturers.json"));
-
-                foreach (var newItem in list)
-                {
-                    try
-                    {
-                        context.AutoPartManufacturers.Add(newItem);
-                        context.SaveChanges();
-                    }
-                    catch (Exception) { }
-                }
-            }
-
-            if (!context.AutoParts.Any())
-            {
-                for (int i = 0; i < 1000; ++i)
-                {
-                    var newItem = new AutoPart
-                    {
-                        AutoPartCarModelId = context.AutoPartCarModels.ToList().ElementAt(random.Next(context.AutoPartCarModels.Count())).AutoPartCarModelId,
-                        AutoPartCategoryId = context.AutoPartCategories.ToList().ElementAt(random.Next(context.AutoPartCategories.Count())).AutoPartCategoryId,
-                        AutoPartManufacturerId = context.AutoPartManufacturers.ToList().ElementAt(random.Next(context.AutoPartManufacturers.Count())).AutoPartManufacturerId,
-                        Article = (Math.Abs(Guid.NewGuid().GetHashCode())).ToString(),
-                        ManufacturerPartCode = (Math.Abs(Guid.NewGuid().GetHashCode())).ToString(),
-                        Cost = random.Next(100, 1000000)
-                    };
-
-                    try
-                    {
-                        context.AutoParts.Add(newItem);
-                        context.SaveChanges();
-                    }
-                    catch (Exception)
-                    {
-                        --i;
+                        try
+                        {
+                            context.Addresses.Add(newItem);
+                            context.SaveChanges();
+                        }
+                        catch (Exception) { }
                     }
                 }
 
-            }
+                if (!context.AutoPartCarModels.Any())
+                {
+                    var list = JsonConvert.DeserializeObject<List<AutoPartCarModel>>(GetEmbeddedResource(ADDRESSES_RESOURCES_PATH, "AutoPartCarModels.json"));
 
-            if (!context.ContactTypes.Any())
-            {
-                var list = new List<ContactType>
+                    foreach (var newItem in list)
+                    {
+                        try
+                        {
+                            context.AutoPartCarModels.Add(newItem);
+                            context.SaveChanges();
+                        }
+                        catch (Exception) { }
+                    }
+                }
+
+                if (!context.AutoPartCategories.Any())
+                {
+                    var list = JsonConvert.DeserializeObject<List<AutoPartCategory>>(GetEmbeddedResource(ADDRESSES_RESOURCES_PATH, "AutoPartCategories.json"));
+
+                    foreach (var newItem in list)
+                    {
+                        try
+                        {
+                            context.AutoPartCategories.Add(newItem);
+                            context.SaveChanges();
+                        }
+                        catch (Exception) { }
+                    }
+                }
+
+                if (!context.AutoPartManufacturers.Any())
+                {
+                    var list = JsonConvert.DeserializeObject<List<AutoPartManufacturer>>(GetEmbeddedResource(ADDRESSES_RESOURCES_PATH, "AutoPartManufacturers.json"));
+
+                    foreach (var newItem in list)
+                    {
+                        try
+                        {
+                            context.AutoPartManufacturers.Add(newItem);
+                            context.SaveChanges();
+                        }
+                        catch (Exception) { }
+                    }
+                }
+
+                if (!context.AutoParts.Any())
+                {
+                    for (int i = 0; i < 1000; ++i)
+                    {
+                        var newItem = new AutoPart
+                        {
+                            AutoPartCarModelId = context.AutoPartCarModels.ToList().ElementAt(random.Next(context.AutoPartCarModels.Count())).AutoPartCarModelId,
+                            AutoPartCategoryId = context.AutoPartCategories.ToList().ElementAt(random.Next(context.AutoPartCategories.Count())).AutoPartCategoryId,
+                            AutoPartManufacturerId = context.AutoPartManufacturers.ToList().ElementAt(random.Next(context.AutoPartManufacturers.Count())).AutoPartManufacturerId,
+                            Article = (Math.Abs(Guid.NewGuid().GetHashCode())).ToString(),
+                            ManufacturerPartCode = (Math.Abs(Guid.NewGuid().GetHashCode())).ToString(),
+                            Cost = random.Next(100, 1000000)
+                        };
+
+                        try
+                        {
+                            context.AutoParts.Add(newItem);
+                            context.SaveChanges();
+                        }
+                        catch (Exception)
+                        {
+                            --i;
+                        }
+                    }
+
+                }
+
+                if (!context.ContactTypes.Any())
+                {
+                    var list = new List<ContactType>
                 {
                     new ContactType {Type = "Phone"},
                     new ContactType {Type = "Email"},
@@ -1320,26 +1322,26 @@ namespace APAM.Common
                     new ContactType {Type = "Viber"},
                 };
 
-                context.ContactTypes.AddRange(list);
-                context.SaveChanges();
-            }
+                    context.ContactTypes.AddRange(list);
+                    context.SaveChanges();
+                }
 
-            if (!context.AdministratorTypes.Any())
-            {
-                var list = new List<AdministratorType>
+                if (!context.AdministratorTypes.Any())
+                {
+                    var list = new List<AdministratorType>
                 {
                     new AdministratorType {Type = "Database Admin"},
                     new AdministratorType {Type = "System Admin"},
                     new AdministratorType {Type = "Manager Admin"},
                 };
 
-                context.AdministratorTypes.AddRange(list);
-                context.SaveChanges();
-            }
+                    context.AdministratorTypes.AddRange(list);
+                    context.SaveChanges();
+                }
 
-            if (!context.OrderStatus.Any())
-            {
-                var list = new List<OrderStatu>
+                if (!context.OrderStatus.Any())
+                {
+                    var list = new List<OrderStatu>
                 {
                     new OrderStatu {Status = "Created"},
                     new OrderStatu {Status = "Сonfirmed"},
@@ -1348,24 +1350,45 @@ namespace APAM.Common
                     new OrderStatu {Status = "Finished"},
                 };
 
-                context.OrderStatus.AddRange(list);
-                context.SaveChanges();
-            }
+                    context.OrderStatus.AddRange(list);
+                    context.SaveChanges();
+                }
 
-            if (!context.Administrators.Any())
-            {
-                for (int i = 0; i < 10; ++i)
+                if (!context.Administrators.Any())
                 {
-                    if (i == 0)
+                    for (int i = 0; i < 10; ++i)
                     {
-                        for (int j = 0; j < context.AdministratorTypes.ToList().Count; ++j)
+                        if (i == 0)
                         {
+                            for (int j = 0; j < context.AdministratorTypes.ToList().Count; ++j)
+                            {
+                                var newItem = new Administrator
+                                {
+                                    Name = names[random.Next(names.Length)],
+                                    Surname = surnames[random.Next(surnames.Length)],
+                                    MiddleName = middleNames[random.Next(surnames.Length)],
+                                    AdministratorTypeId = context.AdministratorTypes.ToList().ElementAt(j).AdministratorTypeId,
+                                };
+
+                                try
+                                {
+                                    context.Administrators.Add(newItem);
+                                    context.SaveChanges();
+                                }
+                                catch (Exception) { }
+
+                                Thread.Sleep(5);
+                            }
+                        }
+                        else
+                        {
+
                             var newItem = new Administrator
                             {
                                 Name = names[random.Next(names.Length)],
                                 Surname = surnames[random.Next(surnames.Length)],
                                 MiddleName = middleNames[random.Next(surnames.Length)],
-                                AdministratorTypeId = context.AdministratorTypes.ToList().ElementAt(j).AdministratorTypeId,
+                                AdministratorTypeId = context.AdministratorTypes.ToList().ElementAt(random.Next(context.AdministratorTypes.Count())).AdministratorTypeId,
                             };
 
                             try
@@ -1378,20 +1401,22 @@ namespace APAM.Common
                             Thread.Sleep(5);
                         }
                     }
-                    else
-                    {
+                }
 
-                        var newItem = new Administrator
+                if (!context.Bookkeepers.Any())
+                {
+                    for (int i = 0; i < 20; ++i)
+                    {
+                        var newItem = new Bookkeeper
                         {
                             Name = names[random.Next(names.Length)],
                             Surname = surnames[random.Next(surnames.Length)],
                             MiddleName = middleNames[random.Next(surnames.Length)],
-                            AdministratorTypeId = context.AdministratorTypes.ToList().ElementAt(random.Next(context.AdministratorTypes.Count())).AdministratorTypeId,
                         };
 
                         try
                         {
-                            context.Administrators.Add(newItem);
+                            context.Bookkeepers.Add(newItem);
                             context.SaveChanges();
                         }
                         catch (Exception) { }
@@ -1399,454 +1424,432 @@ namespace APAM.Common
                         Thread.Sleep(5);
                     }
                 }
-            }
 
-            if (!context.Bookkeepers.Any())
-            {
-                for (int i = 0; i < 20; ++i)
+                if (!context.Sellers.Any())
                 {
-                    var newItem = new Bookkeeper
+                    for (int i = 0; i < 40; ++i)
                     {
-                        Name = names[random.Next(names.Length)],
-                        Surname = surnames[random.Next(surnames.Length)],
-                        MiddleName = middleNames[random.Next(surnames.Length)],
-                    };
+                        var newItem = new Seller
+                        {
+                            Name = names[random.Next(names.Length)],
+                            Surname = surnames[random.Next(surnames.Length)],
+                            MiddleName = middleNames[random.Next(surnames.Length)],
+                        };
 
-                    try
-                    {
-                        context.Bookkeepers.Add(newItem);
-                        context.SaveChanges();
-                    }
-                    catch (Exception) { }
-
-                    Thread.Sleep(5);
-                }
-            }
-
-            if (!context.Sellers.Any())
-            {
-                for (int i = 0; i < 40; ++i)
-                {
-                    var newItem = new Seller
-                    {
-                        Name = names[random.Next(names.Length)],
-                        Surname = surnames[random.Next(surnames.Length)],
-                        MiddleName = middleNames[random.Next(surnames.Length)],
-                    };
-
-                    try
-                    {
-                        context.Sellers.Add(newItem);
-                        context.SaveChanges();
-                    }
-                    catch (Exception) { }
-
-                    Thread.Sleep(5);
-                }
-            }
-
-            if (!context.Customers.Any())
-            {
-                for (int i = 0; i < 100; ++i)
-                {
-                    var newItem = new Customer
-                    {
-                        Name = names[random.Next(names.Length)],
-                        Surname = surnames[random.Next(surnames.Length)],
-                        MiddleName = middleNames[random.Next(surnames.Length)],
-                        BirthDate = GetRandomDay(10000)
-                    };
-
-                    try
-                    {
-                        context.Customers.Add(newItem);
-                        context.SaveChanges();
-                    }
-                    catch (Exception) { }
-
-                    Thread.Sleep(5);
-                }
-            }
-
-            if (!context.AdministratorContacts.Any())
-            {
-                var ppl = context.Administrators.ToList();
-
-                foreach (var item in ppl)
-                {
-                    if (random.Next(2) == 1)
-                    {
                         try
                         {
-                            context.AdministratorContacts.Add(new AdministratorContact
-                            {
-                                ContactTypeId = context.ContactTypes.Where(x => x.Type == "Phone").First().ContactTypeId,
-                                AdministratorId = item.AdministratorId,
-                                Value = phones[random.Next(phones.Length)]
-
-                            });
+                            context.Sellers.Add(newItem);
                             context.SaveChanges();
                         }
                         catch (Exception) { }
-                    }
-                    if (random.Next(2) == 1)
-                    {
-                        try
-                        {
-                            context.AdministratorContacts.Add(new AdministratorContact
-                            {
-                                ContactTypeId = context.ContactTypes.Where(x => x.Type == "Email").First().ContactTypeId,
-                                AdministratorId = item.AdministratorId,
-                                Value = emails[random.Next(emails.Length)]
 
-                            });
-                            context.SaveChanges();
-                        }
-                        catch (Exception) { }
-                    }
-                    if (random.Next(2) == 1)
-                    {
-                        try
-                        {
-                            context.AdministratorContacts.Add(new AdministratorContact
-                            {
-                                ContactTypeId = context.ContactTypes.Where(x => x.Type == "Telegram").First().ContactTypeId,
-                                AdministratorId = item.AdministratorId,
-                                Value = '@' + nickNames[random.Next(nickNames.Length)]
-
-                            });
-                            context.SaveChanges();
-                        }
-                        catch (Exception) { }
-                    }
-                    if (random.Next(2) == 1)
-                    {
-                        try
-                        {
-                            context.AdministratorContacts.Add(new AdministratorContact
-                            {
-                                ContactTypeId = context.ContactTypes.Where(x => x.Type == "Viber").First().ContactTypeId,
-                                AdministratorId = item.AdministratorId,
-                                Value = '@' + nickNames[random.Next(nickNames.Length)]
-
-                            });
-                            context.SaveChanges();
-                        }
-                        catch (Exception) { }
+                        Thread.Sleep(5);
                     }
                 }
 
-            }
-
-            if (!context.BookkeeperContacts.Any())
-            {
-                var ppl = context.Bookkeepers.ToList();
-
-                foreach (var item in ppl)
+                if (!context.Customers.Any())
                 {
-                    if (random.Next(2) == 1)
+                    for (int i = 0; i < 100; ++i)
                     {
+                        var newItem = new Customer
+                        {
+                            Name = names[random.Next(names.Length)],
+                            Surname = surnames[random.Next(surnames.Length)],
+                            MiddleName = middleNames[random.Next(surnames.Length)],
+                            BirthDate = GetRandomDay(10000)
+                        };
+
                         try
                         {
-                            context.BookkeeperContacts.Add(new BookkeeperContact
-                            {
-                                ContactTypeId = context.ContactTypes.Where(x => x.Type == "Phone").First().ContactTypeId,
-                                BookkeeperId = item.BookkeeperId,
-                                Value = phones[random.Next(phones.Length)]
-
-                            });
+                            context.Customers.Add(newItem);
                             context.SaveChanges();
                         }
                         catch (Exception) { }
-                    }
-                    if (random.Next(2) == 1)
-                    {
-                        try
-                        {
-                            context.BookkeeperContacts.Add(new BookkeeperContact
-                            {
-                                ContactTypeId = context.ContactTypes.Where(x => x.Type == "Email").First().ContactTypeId,
-                                BookkeeperId = item.BookkeeperId,
-                                Value = emails[random.Next(emails.Length)]
 
-                            });
-                            context.SaveChanges();
-                        }
-                        catch (Exception) { }
-                    }
-                    if (random.Next(2) == 1)
-                    {
-                        try
-                        {
-                            context.BookkeeperContacts.Add(new BookkeeperContact
-                            {
-                                ContactTypeId = context.ContactTypes.Where(x => x.Type == "Telegram").First().ContactTypeId,
-                                BookkeeperId = item.BookkeeperId,
-                                Value = '@' + nickNames[random.Next(nickNames.Length)]
-
-                            });
-                            context.SaveChanges();
-                        }
-                        catch (Exception) { }
-                    }
-                    if (random.Next(2) == 1)
-                    {
-                        try
-                        {
-                            context.BookkeeperContacts.Add(new BookkeeperContact
-                            {
-                                ContactTypeId = context.ContactTypes.Where(x => x.Type == "Viber").First().ContactTypeId,
-                                BookkeeperId = item.BookkeeperId,
-                                Value = '@' + nickNames[random.Next(nickNames.Length)]
-
-                            });
-                            context.SaveChanges();
-                        }
-                        catch (Exception) { }
+                        Thread.Sleep(5);
                     }
                 }
 
-            }
-
-            if (!context.CustomerContacts.Any())
-            {
-                var ppl = context.Customers.ToList();
-
-                foreach (var item in ppl)
+                if (!context.AdministratorContacts.Any())
                 {
-                    if (random.Next(2) == 1)
-                    {
-                        try
-                        {
-                            context.CustomerContacts.Add(new CustomerContact
-                            {
-                                ContactTypeId = context.ContactTypes.Where(x => x.Type == "Phone").First().ContactTypeId,
-                                CustomerId = item.CustomerId,
-                                Value = phones[random.Next(phones.Length)]
+                    var ppl = context.Administrators.ToList();
 
-                            });
-                            context.SaveChanges();
+                    foreach (var item in ppl)
+                    {
+                        if (random.Next(2) == 1)
+                        {
+                            try
+                            {
+                                context.AdministratorContacts.Add(new AdministratorContact
+                                {
+                                    ContactTypeId = context.ContactTypes.Where(x => x.Type == "Phone").First().ContactTypeId,
+                                    AdministratorId = item.AdministratorId,
+                                    Value = phones[random.Next(phones.Length)]
+
+                                });
+                                context.SaveChanges();
+                            }
+                            catch (Exception) { }
                         }
-                        catch (Exception) { }
+                        if (random.Next(2) == 1)
+                        {
+                            try
+                            {
+                                context.AdministratorContacts.Add(new AdministratorContact
+                                {
+                                    ContactTypeId = context.ContactTypes.Where(x => x.Type == "Email").First().ContactTypeId,
+                                    AdministratorId = item.AdministratorId,
+                                    Value = emails[random.Next(emails.Length)]
+
+                                });
+                                context.SaveChanges();
+                            }
+                            catch (Exception) { }
+                        }
+                        if (random.Next(2) == 1)
+                        {
+                            try
+                            {
+                                context.AdministratorContacts.Add(new AdministratorContact
+                                {
+                                    ContactTypeId = context.ContactTypes.Where(x => x.Type == "Telegram").First().ContactTypeId,
+                                    AdministratorId = item.AdministratorId,
+                                    Value = '@' + nickNames[random.Next(nickNames.Length)]
+
+                                });
+                                context.SaveChanges();
+                            }
+                            catch (Exception) { }
+                        }
+                        if (random.Next(2) == 1)
+                        {
+                            try
+                            {
+                                context.AdministratorContacts.Add(new AdministratorContact
+                                {
+                                    ContactTypeId = context.ContactTypes.Where(x => x.Type == "Viber").First().ContactTypeId,
+                                    AdministratorId = item.AdministratorId,
+                                    Value = '@' + nickNames[random.Next(nickNames.Length)]
+
+                                });
+                                context.SaveChanges();
+                            }
+                            catch (Exception) { }
+                        }
                     }
-                    if (random.Next(2) == 1)
-                    {
-                        try
-                        {
-                            context.CustomerContacts.Add(new CustomerContact
-                            {
-                                ContactTypeId = context.ContactTypes.Where(x => x.Type == "Email").First().ContactTypeId,
-                                CustomerId = item.CustomerId,
-                                Value = emails[random.Next(emails.Length)]
 
-                            });
-                            context.SaveChanges();
+                }
+
+                if (!context.BookkeeperContacts.Any())
+                {
+                    var ppl = context.Bookkeepers.ToList();
+
+                    foreach (var item in ppl)
+                    {
+                        if (random.Next(2) == 1)
+                        {
+                            try
+                            {
+                                context.BookkeeperContacts.Add(new BookkeeperContact
+                                {
+                                    ContactTypeId = context.ContactTypes.Where(x => x.Type == "Phone").First().ContactTypeId,
+                                    BookkeeperId = item.BookkeeperId,
+                                    Value = phones[random.Next(phones.Length)]
+
+                                });
+                                context.SaveChanges();
+                            }
+                            catch (Exception) { }
                         }
-                        catch (Exception) { }
+                        if (random.Next(2) == 1)
+                        {
+                            try
+                            {
+                                context.BookkeeperContacts.Add(new BookkeeperContact
+                                {
+                                    ContactTypeId = context.ContactTypes.Where(x => x.Type == "Email").First().ContactTypeId,
+                                    BookkeeperId = item.BookkeeperId,
+                                    Value = emails[random.Next(emails.Length)]
+
+                                });
+                                context.SaveChanges();
+                            }
+                            catch (Exception) { }
+                        }
+                        if (random.Next(2) == 1)
+                        {
+                            try
+                            {
+                                context.BookkeeperContacts.Add(new BookkeeperContact
+                                {
+                                    ContactTypeId = context.ContactTypes.Where(x => x.Type == "Telegram").First().ContactTypeId,
+                                    BookkeeperId = item.BookkeeperId,
+                                    Value = '@' + nickNames[random.Next(nickNames.Length)]
+
+                                });
+                                context.SaveChanges();
+                            }
+                            catch (Exception) { }
+                        }
+                        if (random.Next(2) == 1)
+                        {
+                            try
+                            {
+                                context.BookkeeperContacts.Add(new BookkeeperContact
+                                {
+                                    ContactTypeId = context.ContactTypes.Where(x => x.Type == "Viber").First().ContactTypeId,
+                                    BookkeeperId = item.BookkeeperId,
+                                    Value = '@' + nickNames[random.Next(nickNames.Length)]
+
+                                });
+                                context.SaveChanges();
+                            }
+                            catch (Exception) { }
+                        }
                     }
-                    if (random.Next(2) == 1)
-                    {
-                        try
-                        {
-                            context.CustomerContacts.Add(new CustomerContact
-                            {
-                                ContactTypeId = context.ContactTypes.Where(x => x.Type == "Telegram").First().ContactTypeId,
-                                CustomerId = item.CustomerId,
-                                Value = '@' + nickNames[random.Next(nickNames.Length)]
 
-                            });
-                            context.SaveChanges();
+                }
+
+                if (!context.CustomerContacts.Any())
+                {
+                    var ppl = context.Customers.ToList();
+
+                    foreach (var item in ppl)
+                    {
+                        if (random.Next(2) == 1)
+                        {
+                            try
+                            {
+                                context.CustomerContacts.Add(new CustomerContact
+                                {
+                                    ContactTypeId = context.ContactTypes.Where(x => x.Type == "Phone").First().ContactTypeId,
+                                    CustomerId = item.CustomerId,
+                                    Value = phones[random.Next(phones.Length)]
+
+                                });
+                                context.SaveChanges();
+                            }
+                            catch (Exception) { }
                         }
-                        catch (Exception) { }
+                        if (random.Next(2) == 1)
+                        {
+                            try
+                            {
+                                context.CustomerContacts.Add(new CustomerContact
+                                {
+                                    ContactTypeId = context.ContactTypes.Where(x => x.Type == "Email").First().ContactTypeId,
+                                    CustomerId = item.CustomerId,
+                                    Value = emails[random.Next(emails.Length)]
+
+                                });
+                                context.SaveChanges();
+                            }
+                            catch (Exception) { }
+                        }
+                        if (random.Next(2) == 1)
+                        {
+                            try
+                            {
+                                context.CustomerContacts.Add(new CustomerContact
+                                {
+                                    ContactTypeId = context.ContactTypes.Where(x => x.Type == "Telegram").First().ContactTypeId,
+                                    CustomerId = item.CustomerId,
+                                    Value = '@' + nickNames[random.Next(nickNames.Length)]
+
+                                });
+                                context.SaveChanges();
+                            }
+                            catch (Exception) { }
+                        }
+                        if (random.Next(2) == 1)
+                        {
+                            try
+                            {
+                                context.CustomerContacts.Add(new CustomerContact
+                                {
+                                    ContactTypeId = context.ContactTypes.Where(x => x.Type == "Viber").First().ContactTypeId,
+                                    CustomerId = item.CustomerId,
+                                    Value = '@' + nickNames[random.Next(nickNames.Length)]
+
+                                });
+                                context.SaveChanges();
+                            }
+                            catch (Exception) { }
+                        }
                     }
-                    if (random.Next(2) == 1)
-                    {
-                        try
-                        {
-                            context.CustomerContacts.Add(new CustomerContact
-                            {
-                                ContactTypeId = context.ContactTypes.Where(x => x.Type == "Viber").First().ContactTypeId,
-                                CustomerId = item.CustomerId,
-                                Value = '@' + nickNames[random.Next(nickNames.Length)]
 
-                            });
-                            context.SaveChanges();
+                }
+
+                if (!context.SellerContacts.Any())
+                {
+                    var ppl = context.Sellers.ToList();
+
+                    foreach (var item in ppl)
+                    {
+                        if (random.Next(2) == 1)
+                        {
+                            try
+                            {
+                                context.SellerContacts.Add(new SellerContact
+                                {
+                                    ContactTypeId = context.ContactTypes.Where(x => x.Type == "Phone").First().ContactTypeId,
+                                    SellerId = item.SellerId,
+                                    Value = phones[random.Next(phones.Length)]
+
+                                });
+                                context.SaveChanges();
+                            }
+                            catch (Exception) { }
                         }
-                        catch (Exception) { }
+                        if (random.Next(2) == 1)
+                        {
+                            try
+                            {
+                                context.SellerContacts.Add(new SellerContact
+                                {
+                                    ContactTypeId = context.ContactTypes.Where(x => x.Type == "Email").First().ContactTypeId,
+                                    SellerId = item.SellerId,
+                                    Value = emails[random.Next(emails.Length)]
+
+                                });
+                                context.SaveChanges();
+                            }
+                            catch (Exception) { }
+                        }
+                        if (random.Next(2) == 1)
+                        {
+                            try
+                            {
+                                context.SellerContacts.Add(new SellerContact
+                                {
+                                    ContactTypeId = context.ContactTypes.Where(x => x.Type == "Telegram").First().ContactTypeId,
+                                    SellerId = item.SellerId,
+                                    Value = '@' + nickNames[random.Next(nickNames.Length)]
+
+                                });
+                                context.SaveChanges();
+                            }
+                            catch (Exception) { }
+                        }
+                        if (random.Next(2) == 1)
+                        {
+                            try
+                            {
+                                context.SellerContacts.Add(new SellerContact
+                                {
+                                    ContactTypeId = context.ContactTypes.Where(x => x.Type == "Viber").First().ContactTypeId,
+                                    SellerId = item.SellerId,
+                                    Value = '@' + nickNames[random.Next(nickNames.Length)]
+
+                                });
+                                context.SaveChanges();
+                            }
+                            catch (Exception) { }
+                        }
+                    }
+
+                }
+
+                if (!context.AdministratorSalaries.Any())
+                {
+                    var ppl = context.Administrators.ToList();
+
+                    foreach (var item in ppl)
+                    {
+                        for (int i = 0; i < 20; ++i)
+                        {
+                            try
+                            {
+                                context.AdministratorSalaries.Add(new AdministratorSalary
+                                {
+                                    Salary = random.Next(1500, 7000),
+                                    IssueDate = DateTime.Now.AddDays(-i * 30),
+                                    AdministratorId = item.AdministratorId
+                                });
+                                context.SaveChanges();
+                            }
+                            catch (Exception)
+                            {
+                            }
+                        }
                     }
                 }
 
-            }
-
-            if (!context.SellerContacts.Any())
-            {
-                var ppl = context.Sellers.ToList();
-
-                foreach (var item in ppl)
+                if (!context.BookkeeperSalaries.Any())
                 {
-                    if (random.Next(2) == 1)
-                    {
-                        try
-                        {
-                            context.SellerContacts.Add(new SellerContact
-                            {
-                                ContactTypeId = context.ContactTypes.Where(x => x.Type == "Phone").First().ContactTypeId,
-                                SellerId = item.SellerId,
-                                Value = phones[random.Next(phones.Length)]
+                    var ppl = context.Bookkeepers.ToList();
 
-                            });
-                            context.SaveChanges();
-                        }
-                        catch (Exception) { }
-                    }
-                    if (random.Next(2) == 1)
+                    foreach (var item in ppl)
                     {
-                        try
+                        for (int i = 0; i < 20; ++i)
                         {
-                            context.SellerContacts.Add(new SellerContact
+                            try
                             {
-                                ContactTypeId = context.ContactTypes.Where(x => x.Type == "Email").First().ContactTypeId,
-                                SellerId = item.SellerId,
-                                Value = emails[random.Next(emails.Length)]
-
-                            });
-                            context.SaveChanges();
-                        }
-                        catch (Exception) { }
-                    }
-                    if (random.Next(2) == 1)
-                    {
-                        try
-                        {
-                            context.SellerContacts.Add(new SellerContact
+                                context.BookkeeperSalaries.Add(new BookkeeperSalary
+                                {
+                                    Salary = random.Next(1700, 3000),
+                                    IssueDate = DateTime.Now.AddDays(-i * 30),
+                                    BookkeeperId = item.BookkeeperId
+                                });
+                                context.SaveChanges();
+                            }
+                            catch (Exception)
                             {
-                                ContactTypeId = context.ContactTypes.Where(x => x.Type == "Telegram").First().ContactTypeId,
-                                SellerId = item.SellerId,
-                                Value = '@' + nickNames[random.Next(nickNames.Length)]
-
-                            });
-                            context.SaveChanges();
+                            }
                         }
-                        catch (Exception) { }
-                    }
-                    if (random.Next(2) == 1)
-                    {
-                        try
-                        {
-                            context.SellerContacts.Add(new SellerContact
-                            {
-                                ContactTypeId = context.ContactTypes.Where(x => x.Type == "Viber").First().ContactTypeId,
-                                SellerId = item.SellerId,
-                                Value = '@' + nickNames[random.Next(nickNames.Length)]
-
-                            });
-                            context.SaveChanges();
-                        }
-                        catch (Exception) { }
                     }
                 }
 
-            }
-
-            if (!context.AdministratorSalaries.Any())
-            {
-                var ppl = context.Administrators.ToList();
-
-                foreach (var item in ppl)
+                if (!context.SellerSalaries.Any())
                 {
-                    for (int i = 0; i < 20; ++i)
+                    var ppl = context.Sellers.ToList();
+
+                    foreach (var item in ppl)
                     {
+                        for (int i = 0; i < 20; ++i)
+                        {
+                            try
+                            {
+                                context.SellerSalaries.Add(new SellerSalary
+                                {
+                                    Salary = random.Next(2000, 9000),
+                                    IssueDate = DateTime.Now.AddDays(-i * 30),
+                                    SellerId = item.SellerId
+                                });
+                                context.SaveChanges();
+                            }
+                            catch (Exception)
+                            {
+                            }
+                        }
+                    }
+                }
+
+                if (!context.Orders.Any())
+                {
+                    for (int i = 0; i < 3000; i++)
+                    {
+                        var newItem = new Order
+                        {
+                            OrderStatusId = context.OrderStatus.ToList().ElementAt(random.Next(context.OrderStatus.Count())).OrderStatusId,
+                            AutoPartId = context.AutoParts.ToList().ElementAt(random.Next(context.AutoParts.Count())).AutoPartId,
+                            SellerId = context.Sellers.ToList().ElementAt(random.Next(context.Sellers.Count())).SellerId,
+                            CustomerId = context.Customers.ToList().ElementAt(random.Next(context.Customers.Count())).CustomerId,
+                            From_AdressId = context.Addresses.ToList().ElementAt(random.Next(context.Addresses.Count())).AdressId,
+                            To_AdressId = context.Addresses.ToList().ElementAt(random.Next(context.Addresses.Count())).AdressId,
+                            OrderCreatedDateTime = DateTime.Now.AddDays(-i - 2),
+                            OrderFinishedDateTime = DateTime.Now.AddDays(-i - 1)
+                        };
+
                         try
                         {
-                            context.AdministratorSalaries.Add(new AdministratorSalary
-                            {
-                                Salary = random.Next(1500, 7000),
-                                IssueDate = DateTime.Now.AddDays(-i * 30),
-                                AdministratorId = item.AdministratorId
-                            });
+                            context.Orders.Add(newItem);
                             context.SaveChanges();
                         }
                         catch (Exception)
                         {
+
                         }
-                    }
-                }
-            }
-
-            if (!context.BookkeeperSalaries.Any())
-            {
-                var ppl = context.Bookkeepers.ToList();
-
-                foreach (var item in ppl)
-                {
-                    for (int i = 0; i < 20; ++i)
-                    {
-                        try
-                        {
-                            context.BookkeeperSalaries.Add(new BookkeeperSalary
-                            {
-                                Salary = random.Next(1700, 3000),
-                                IssueDate = DateTime.Now.AddDays(-i * 30),
-                                BookkeeperId = item.BookkeeperId
-                            });
-                            context.SaveChanges();
-                        }
-                        catch (Exception)
-                        {
-                        }
-                    }
-                }
-            }
-
-            if (!context.SellerSalaries.Any())
-            {
-                var ppl = context.Sellers.ToList();
-
-                foreach (var item in ppl)
-                {
-                    for (int i = 0; i < 20; ++i)
-                    {
-                        try
-                        {
-                            context.SellerSalaries.Add(new SellerSalary
-                            {
-                                Salary = random.Next(2000, 9000),
-                                IssueDate = DateTime.Now.AddDays(-i * 30),
-                                SellerId = item.SellerId
-                            });
-                            context.SaveChanges();
-                        }
-                        catch (Exception)
-                        {
-                        }
-                    }
-                }
-            }
-
-            if (!context.Orders.Any())
-            {
-                for (int i = 0; i < 3000; i++)
-                {
-                    var newItem = new Order
-                    {
-                        OrderStatusId = context.OrderStatus.ToList().ElementAt(random.Next(context.OrderStatus.Count())).OrderStatusId,
-                        AutoPartId = context.AutoParts.ToList().ElementAt(random.Next(context.AutoParts.Count())).AutoPartId,
-                        SellerId = context.Sellers.ToList().ElementAt(random.Next(context.Sellers.Count())).SellerId,
-                        CustomerId = context.Customers.ToList().ElementAt(random.Next(context.Customers.Count())).CustomerId,
-                        From_AdressId = context.Addresses.ToList().ElementAt(random.Next(context.Addresses.Count())).AdressId,
-                        To_AdressId = context.Addresses.ToList().ElementAt(random.Next(context.Addresses.Count())).AdressId,
-                        OrderCreatedDateTime = DateTime.Now.AddDays(-i - 2),
-                        OrderFinishedDateTime = DateTime.Now.AddDays(-i - 1)
-                    };
-
-                    try
-                    {
-                        context.Orders.Add(newItem);
-                        context.SaveChanges();
-                    }
-                    catch (Exception)
-                    {
-
                     }
                 }
             }
