@@ -48,45 +48,45 @@ namespace APAM.ViewModels
         {
             var modules = new List<APAM_DBEntitiesModuleDescription>();
             
-            if (false)
+            if (UserData.IsAdmin || UserData.IsBookkeeper)
                 modules.Add(new APAM_DBEntitiesModuleDescription(APAM_DBEntitiesResources.AddressPlural, "AddressCollectionView", TablesGroup, GetPeekCollectionViewModelFactory(x => x.Addresses)));
-            if (false)
+            if (UserData.IsAdmin || UserData.IsManager)
                 modules.Add(new APAM_DBEntitiesModuleDescription(APAM_DBEntitiesResources.AdministratorPlural, "AdministratorCollectionView", TablesGroup, GetPeekCollectionViewModelFactory(x => x.Administrators)));
-            if (false)
+            if (UserData.IsAdmin || UserData.IsManager)
                 modules.Add(new APAM_DBEntitiesModuleDescription(APAM_DBEntitiesResources.AdministratorContactPlural, "AdministratorContactCollectionView", TablesGroup, GetPeekCollectionViewModelFactory(x => x.AdministratorContacts)));
-            if (false)
+            if (UserData.IsAdmin || UserData.IsBookkeeper)
                 modules.Add(new APAM_DBEntitiesModuleDescription(APAM_DBEntitiesResources.AdministratorSalaryPlural, "AdministratorSalaryCollectionView", TablesGroup, GetPeekCollectionViewModelFactory(x => x.AdministratorSalaries)));
-            if (false)
+            if (UserData.IsAdmin)
                 modules.Add(new APAM_DBEntitiesModuleDescription(APAM_DBEntitiesResources.AdministratorTypePlural, "AdministratorTypeCollectionView", TablesGroup, GetPeekCollectionViewModelFactory(x => x.AdministratorTypes)));
-            if (false)
+            if (UserData.IsAdmin || UserData.IsBookkeeper || UserData.IsManager)
                 modules.Add(new APAM_DBEntitiesModuleDescription(APAM_DBEntitiesResources.AutoPartPlural, "AutoPartCollectionView", TablesGroup, GetPeekCollectionViewModelFactory(x => x.AutoParts)));
-            if (false)
+            if (UserData.IsAdmin)
                 modules.Add(new APAM_DBEntitiesModuleDescription(APAM_DBEntitiesResources.AutoPartCarModelPlural, "AutoPartCarModelCollectionView", TablesGroup, GetPeekCollectionViewModelFactory(x => x.AutoPartCarModels)));
-            if (false)
+            if (UserData.IsAdmin)
                 modules.Add(new APAM_DBEntitiesModuleDescription(APAM_DBEntitiesResources.AutoPartCategoryPlural, "AutoPartCategoryCollectionView", TablesGroup, GetPeekCollectionViewModelFactory(x => x.AutoPartCategories)));
-            if (!UserData.IsBookeeper())
+            if (UserData.IsAdmin)
                 modules.Add(new APAM_DBEntitiesModuleDescription(APAM_DBEntitiesResources.AutoPartManufacturerPlural, "AutoPartManufacturerCollectionView", TablesGroup, GetPeekCollectionViewModelFactory(x => x.AutoPartManufacturers)));
-            if (false)
+            if (UserData.IsAdmin || UserData.IsManager)
                 modules.Add(new APAM_DBEntitiesModuleDescription(APAM_DBEntitiesResources.BookkeeperPlural, "BookkeeperCollectionView", TablesGroup, GetPeekCollectionViewModelFactory(x => x.Bookkeepers)));
-            if (false)
+            if (UserData.IsAdmin || UserData.IsManager)
                 modules.Add(new APAM_DBEntitiesModuleDescription(APAM_DBEntitiesResources.BookkeeperContactPlural, "BookkeeperContactCollectionView", TablesGroup, GetPeekCollectionViewModelFactory(x => x.BookkeeperContacts)));
-            if (false)
+            if (UserData.IsAdmin || UserData.IsBookkeeper)
                 modules.Add(new APAM_DBEntitiesModuleDescription(APAM_DBEntitiesResources.BookkeeperSalaryPlural, "BookkeeperSalaryCollectionView", TablesGroup, GetPeekCollectionViewModelFactory(x => x.BookkeeperSalaries)));
-            if (false)
+            if (UserData.IsAdmin)
                 modules.Add(new APAM_DBEntitiesModuleDescription(APAM_DBEntitiesResources.ContactTypePlural, "ContactTypeCollectionView", TablesGroup, GetPeekCollectionViewModelFactory(x => x.ContactTypes)));
-            if (false)
+            if (UserData.IsAdmin || UserData.IsManager)
                 modules.Add(new APAM_DBEntitiesModuleDescription(APAM_DBEntitiesResources.CustomerPlural, "CustomerCollectionView", TablesGroup, GetPeekCollectionViewModelFactory(x => x.Customers)));
-            if (false)
+            if (UserData.IsAdmin || UserData.IsManager)
                 modules.Add(new APAM_DBEntitiesModuleDescription(APAM_DBEntitiesResources.CustomerContactPlural, "CustomerContactCollectionView", TablesGroup, GetPeekCollectionViewModelFactory(x => x.CustomerContacts)));
-            if (false)
+            if (UserData.IsAdmin || UserData.IsBookkeeper || UserData.IsManager)
                 modules.Add(new APAM_DBEntitiesModuleDescription(APAM_DBEntitiesResources.OrderPlural, "OrderCollectionView", TablesGroup, GetPeekCollectionViewModelFactory(x => x.Orders)));
-            if (false)
+            if (UserData.IsAdmin)
                 modules.Add(new APAM_DBEntitiesModuleDescription(APAM_DBEntitiesResources.OrderStatuPlural, "OrderStatuCollectionView", TablesGroup, GetPeekCollectionViewModelFactory(x => x.OrderStatus)));
-            if (false)
+            if (UserData.IsAdmin || UserData.IsManager)
                 modules.Add(new APAM_DBEntitiesModuleDescription(APAM_DBEntitiesResources.SellerPlural, "SellerCollectionView", TablesGroup, GetPeekCollectionViewModelFactory(x => x.Sellers)));
-            if (false)
+            if (UserData.IsAdmin || UserData.IsManager)
                 modules.Add(new APAM_DBEntitiesModuleDescription(APAM_DBEntitiesResources.SellerContactPlural, "SellerContactCollectionView", TablesGroup, GetPeekCollectionViewModelFactory(x => x.SellerContacts)));
-            if (false)
+            if (UserData.IsAdmin || UserData.IsBookkeeper)
                 modules.Add(new APAM_DBEntitiesModuleDescription(APAM_DBEntitiesResources.SellerSalaryPlural, "SellerSalaryCollectionView", TablesGroup, GetPeekCollectionViewModelFactory(x => x.SellerSalaries)));
 
             return modules.ToArray();
