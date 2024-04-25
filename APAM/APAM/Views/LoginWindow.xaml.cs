@@ -39,6 +39,7 @@ namespace APAM.Views
                 APAM_Connection.SetConnectionSettings(login, password);
                 MessageBox.Show("Succesful! Please, wait for the program to load...");
                 _isSuccesful = true;
+
                 this.Close();
             }
             catch (Exception)

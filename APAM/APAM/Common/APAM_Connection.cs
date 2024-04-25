@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Common;
+using System.Data.SqlClient;
 using System.Reflection;
 
 namespace APAM.Common
@@ -18,14 +20,35 @@ namespace APAM.Common
             string provider = "System.Data.SqlClient";
             DbProviderFactory factory = DbProviderFactories.GetFactory(provider);
 
-            using (DbConnection conn = factory.CreateConnection())
+            using (DbConnection dbConnection = factory.CreateConnection())
             {
-                conn.ConnectionString = testConnectionString;
-                conn.Open();
+                dbConnection.ConnectionString = testConnectionString;
+                dbConnection.Open();
             }
 
-            UserData.Login = login;
-            UserData.Password = password;
+            using (SqlConnection sqlConnection = new SqlConnection(testConnectionString))
+            {
+                sqlConnection.Open();
+
+                UserData.Login = login;
+                UserData.Password = password;
+
+                var roles = new List<string>();
+
+                var sql = $"SELECT p.NAME FROM sys.database_role_members rm JOIN sys.database_principals p ON rm.role_principal_id = p.principal_id JOIN sys.database_principals m ON rm.member_principal_id = m.principal_id WHERE m.name = '{UserData.Login}'";
+                using (SqlCommand command = new SqlCommand(sql, sqlConnection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            roles.Add(reader.GetString(0));
+                        }
+                    }
+                }
+
+                UserData.Roles = roles;
+            }
 
             connectionSettings.ConnectionString = userConnectionString;
         }

@@ -898,7 +898,7 @@ namespace APAM.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Address.
+        ///   Looks up a localized string similar to From Address.
         /// </summary>
         public static string Order_Address {
             get {
@@ -907,7 +907,7 @@ namespace APAM.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Address1.
+        ///   Looks up a localized string similar to To Address.
         /// </summary>
         public static string Order_Address1 {
             get {
@@ -970,7 +970,7 @@ namespace APAM.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Order Statu.
+        ///   Looks up a localized string similar to Order Status.
         /// </summary>
         public static string Order_OrderStatu {
             get {
@@ -997,7 +997,7 @@ namespace APAM.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Order Statu.
+        ///   Looks up a localized string similar to Order Status.
         /// </summary>
         public static string OrderStatu {
             get {
@@ -1024,7 +1024,7 @@ namespace APAM.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Order Status.
+        ///   Looks up a localized string similar to Order Statuses.
         /// </summary>
         public static string OrderStatuPlural {
             get {

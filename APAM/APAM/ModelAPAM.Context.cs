@@ -19,7 +19,6 @@ namespace APAM
         public APAM_DBEntities()
             : base("APAM_DBEntities")
         {
-            UserData.CheckRole(this);
             //DataSeeder.Seed(this);
         }
 
