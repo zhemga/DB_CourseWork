@@ -1,4 +1,5 @@
 ﻿using APAM;
+using APAM.Common;
 using DevExpress.Mvvm;
 using DevExpress.Mvvm.DataModel;
 using DevExpress.Mvvm.DataModel.DesignTime;

@@ -17,11 +17,11 @@ namespace APAM
     public partial class APAM_DBEntities : DbContext
     {
         public APAM_DBEntities()
-            : base("name=APAM_DBEntities")
+            : base("APAM_DBEntities")
         {
             DataSeeder.Seed(this);
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
