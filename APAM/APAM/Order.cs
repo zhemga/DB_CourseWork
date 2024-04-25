@@ -11,7 +11,8 @@ namespace APAM
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Order
     {
         public int OrderId { get; set; }
@@ -24,8 +25,9 @@ namespace APAM
         public Nullable<System.DateTime> OrderFinishedDateTime { get; set; }
         public int From_AdressId { get; set; }
         public int To_AdressId { get; set; }
-    
+
         public virtual Address Address { get; set; }
+
         public virtual Address Address1 { get; set; }
         public virtual AutoPart AutoPart { get; set; }
         public virtual Customer Customer { get; set; }
