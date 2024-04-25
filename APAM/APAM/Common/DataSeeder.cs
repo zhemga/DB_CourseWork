@@ -16,56 +16,89 @@ namespace APAM.Common
         {
             if (!context.Addresses.Any())
             {
-                context.Addresses
-                    .AddRange(JsonConvert.DeserializeObject<List<Address>>(GetEmbeddedResource(ADDRESSES_RESOURCES_PATH, "Addresses.json")));
-                context.SaveChanges();
+                var list = JsonConvert.DeserializeObject<List<Address>>(GetEmbeddedResource(ADDRESSES_RESOURCES_PATH, "Addresses.json"));
+
+                foreach (var newItem in list)
+                {
+                    try
+                    {
+                        context.Addresses.Add(newItem);
+                        context.SaveChanges();
+                    }
+                    catch (Exception) { }
+                }
             }
 
             if (!context.AutoPartCarModels.Any())
             {
-                context.AutoPartCarModels
-                    .AddRange(JsonConvert.DeserializeObject<List<AutoPartCarModel>>(GetEmbeddedResource(ADDRESSES_RESOURCES_PATH, "AutoPartCarModels.json")));
-                context.SaveChanges();
+                var list = JsonConvert.DeserializeObject<List<AutoPartCarModel>>(GetEmbeddedResource(ADDRESSES_RESOURCES_PATH, "AutoPartCarModels.json"));
+
+                foreach (var newItem in list)
+                {
+                    try
+                    {
+                        context.AutoPartCarModels.Add(newItem);
+                        context.SaveChanges();
+                    }
+                    catch (Exception) { }
+                }
             }
 
             if (!context.AutoPartCategories.Any())
             {
-                context.AutoPartCategories
-                   .AddRange(JsonConvert.DeserializeObject<List<AutoPartCategory>>(GetEmbeddedResource(ADDRESSES_RESOURCES_PATH, "AutoPartCategories.json")));
-                context.SaveChanges();
+                var list = JsonConvert.DeserializeObject<List<AutoPartCategory>>(GetEmbeddedResource(ADDRESSES_RESOURCES_PATH, "AutoPartCategories.json"));
+
+                foreach (var newItem in list)
+                {
+                    try
+                    {
+                        context.AutoPartCategories.Add(newItem);
+                        context.SaveChanges();
+                    }
+                    catch (Exception) { }
+                }
             }
 
             if (!context.AutoPartManufacturers.Any())
             {
-                context.AutoPartManufacturers
-                   .AddRange(JsonConvert.DeserializeObject<List<AutoPartManufacturer>>(GetEmbeddedResource(ADDRESSES_RESOURCES_PATH, "AutoPartManufacturers.json")));
-                context.SaveChanges();
+                var list = JsonConvert.DeserializeObject<List<AutoPartManufacturer>>(GetEmbeddedResource(ADDRESSES_RESOURCES_PATH, "AutoPartManufacturers.json"));
+
+                foreach (var newItem in list)
+                {
+                    try
+                    {
+                        context.AutoPartManufacturers.Add(newItem);
+                        context.SaveChanges();
+                    }
+                    catch (Exception) { }
+                }
             }
 
             if (!context.AutoParts.Any())
             {
-                for (int i = 0; i < 1000; i++)
+                for (int i = 0; i < 1000; ++i)
                 {
-                    var ap = new AutoPart
+                    var newItem = new AutoPart
                     {
                         AutoPartCarModelId = context.AutoPartCarModels.ToList().ElementAt(new Random().Next(context.AutoPartCarModels.Count())).AutoPartCarModelId,
                         AutoPartCategoryId = context.AutoPartCategories.ToList().ElementAt(new Random().Next(context.AutoPartCategories.Count())).AutoPartCategoryId,
                         AutoPartManufacturerId = context.AutoPartManufacturers.ToList().ElementAt(new Random().Next(context.AutoPartManufacturers.Count())).AutoPartManufacturerId,
-                        Article = new Random().Next(1000000, 9000000).ToString(),
-                        ManufacturerPartCode = new Random().Next(10000000, 90000000).ToString(),
+                        Article = (Math.Abs(Guid.NewGuid().GetHashCode())).ToString(),
+                        ManufacturerPartCode = (Math.Abs(Guid.NewGuid().GetHashCode())).ToString(),
                         Cost = new Random().Next(100, 1000000)
                     };
 
                     try
                     {
-                        context.AutoParts.Add(ap);
+                        context.AutoParts.Add(newItem);
                         context.SaveChanges();
                     }
-                    catch (Exception) {}
-
-                    Thread.Sleep(3);
+                    catch (Exception) 
+                    {
+                        --i;
+                    }
                 }
-                
+
             }
 
         }
