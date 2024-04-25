@@ -1,6 +1,7 @@
 ﻿using APAM.Common;
 using APAM.Views;
 using DevExpress.Xpf.Core;
+using System.Windows.Input;
 
 namespace APAM
 {

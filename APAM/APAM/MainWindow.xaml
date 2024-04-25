@@ -4,6 +4,5 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:controls="clr-namespace:APAM.Views"
     Title="APAM: Auto Parts Accounting Manager" Height="800" Width="1000">
-    <controls:APAM_DBEntitiesView>
-    </controls:APAM_DBEntitiesView>
+    <controls:APAM_DBEntitiesView></controls:APAM_DBEntitiesView>
 </dx:ThemedWindow>

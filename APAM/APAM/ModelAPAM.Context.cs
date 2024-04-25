@@ -19,7 +19,8 @@ namespace APAM
         public APAM_DBEntities()
             : base("APAM_DBEntities")
         {
-            DataSeeder.Seed(this);
+            UserData.CheckRole(this);
+            //DataSeeder.Seed(this);
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
