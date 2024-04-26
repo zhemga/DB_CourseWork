@@ -1296,7 +1296,7 @@ namespace APAM.Common
                             AutoPartManufacturerId = context.AutoPartManufacturers.ToList().ElementAt(random.Next(context.AutoPartManufacturers.Count())).AutoPartManufacturerId,
                             Article = (Math.Abs(Guid.NewGuid().GetHashCode())).ToString(),
                             ManufacturerPartCode = (Math.Abs(Guid.NewGuid().GetHashCode())).ToString(),
-                            Cost = random.Next(100, 1000000)
+                            Cost = random.Next(1000, 20000)
                         };
 
                         try
@@ -1756,7 +1756,7 @@ namespace APAM.Common
 
                     foreach (var item in ppl)
                     {
-                        for (int i = 0; i < 20; ++i)
+                        for (int i = 0; i < 70; ++i)
                         {
                             try
                             {
@@ -1781,7 +1781,7 @@ namespace APAM.Common
 
                     foreach (var item in ppl)
                     {
-                        for (int i = 0; i < 20; ++i)
+                        for (int i = 0; i < 70; ++i)
                         {
                             try
                             {
@@ -1806,13 +1806,13 @@ namespace APAM.Common
 
                     foreach (var item in ppl)
                     {
-                        for (int i = 0; i < 20; ++i)
+                        for (int i = 0; i < 70; ++i)
                         {
                             try
                             {
                                 context.SellerSalaries.Add(new SellerSalary
                                 {
-                                    Salary = random.Next(2000, 9000),
+                                    Salary = random.Next(1500, 2000),
                                     IssueDate = DateTime.Now.AddDays(-i * 30),
                                     SellerId = item.SellerId
                                 });
@@ -1827,7 +1827,7 @@ namespace APAM.Common
 
                 if (!context.Orders.Any())
                 {
-                    for (int i = 0; i < 3000; i++)
+                    for (int i = 0; i < 2000; i++)
                     {
                         var newItem = new Order
                         {

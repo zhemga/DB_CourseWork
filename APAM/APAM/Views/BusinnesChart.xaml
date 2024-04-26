@@ -1,0 +1,137 @@
+﻿<dx:ThemedWindow x:Class="APAM.Views.BusinnesChart"
+        xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/charts"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+        xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+        xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+        xmlns:dxdo="http://schemas.devexpress.com/winfx/2008/xaml/docking"
+        xmlns:dxrudex="http://schemas.devexpress.com/winfx/2008/xaml/reports/userdesignerextensions"
+        xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+        xmlns:viewModel="clr-namespace:APAM.ViewModels"
+        xmlns:view="clr-namespace:APAM.Views"
+        Title="Businnes Chart" Height="350" Width="620">
+    <Grid>
+        <dxc:ChartControl Name="chartControl1">
+            <dxc:ChartControl.DataContext>
+                <viewModel:BusinessChartViewModel/>
+            </dxc:ChartControl.DataContext>
+            <dxc:ChartControl.Diagram>
+                <dxc:XYDiagram2D>
+                    <dxc:XYDiagram2D.AxisX>
+                        <dxc:AxisX2D>
+                            <dxc:AxisX2D.DateTimeScaleOptions>
+                                <dxc:AutomaticDateTimeScaleOptions AggregateFunction="Sum"/>
+                            </dxc:AxisX2D.DateTimeScaleOptions>
+                        </dxc:AxisX2D>
+                    </dxc:XYDiagram2D.AxisX>
+                    <dxc:XYDiagram2D.Series>
+                        <dxc:LineSeries2D DisplayName="Income (Auto Parts Sellings)" 
+                                          DataSource="{Binding OrdersData}" 
+                                          ArgumentScaleType="DateTime"
+                                          ArgumentDataMember="Time"
+                                          ValueDataMember="Value"
+                                          LabelsVisibility="False"
+                                          CrosshairLabelPattern="{}{A:MMMM}: {V:f2}$"
+                                          MarkerSize="14" 
+                                          Brush="Green"
+                                          MarkerVisible="True">
+                            <dxc:LineSeries2D.MarkerModel>
+                                <dxc:RingMarker2DModel/>
+                            </dxc:LineSeries2D.MarkerModel>
+                            <dxc:LineSeries2D.Label>
+                                <dxc:SeriesLabel TextPattern="{}{V:f1}" 
+                                                 dxc:MarkerSeries2D.Angle="90" 
+                                                 ConnectorVisible="False"/>
+                            </dxc:LineSeries2D.Label>
+                        </dxc:LineSeries2D>
+                        <dxc:LineSeries2D DisplayName="Expenses (Administrators)" 
+                                          DataSource="{Binding AdministratorSalaryData}" 
+                                          ArgumentScaleType="DateTime"
+                                          ArgumentDataMember="Time"
+                                          ValueDataMember="Value"
+                                          LabelsVisibility="False"
+                                          CrosshairLabelPattern="{}{A:MMMM}: {V:f2}$"
+                                          MarkerSize="14" 
+                                          MarkerVisible="True"
+                                          Brush="DarkGoldenrod">
+                            <dxc:LineSeries2D.MarkerModel>
+                                <dxc:RingMarker2DModel/>
+                            </dxc:LineSeries2D.MarkerModel>
+                            <dxc:LineSeries2D.Label>
+                                <dxc:SeriesLabel TextPattern="{}{V:f1}" 
+                                                 dxc:MarkerSeries2D.Angle="90" 
+                                                 ConnectorVisible="False"/>
+                            </dxc:LineSeries2D.Label>
+                        </dxc:LineSeries2D>
+                        <dxc:LineSeries2D DisplayName="Expenses (Bookkeepers)" 
+                                          DataSource="{Binding BookkeeperSalaryData}" 
+                                          ArgumentScaleType="DateTime"
+                                          ArgumentDataMember="Time"
+                                          ValueDataMember="Value"
+                                          LabelsVisibility="False"
+                                          CrosshairLabelPattern="{}{A:MMMM}: {V:f2}$"
+                                          MarkerSize="14" 
+                                          MarkerVisible="True"
+                                          Brush="CadetBlue">
+                            <dxc:LineSeries2D.MarkerModel>
+                                <dxc:RingMarker2DModel/>
+                            </dxc:LineSeries2D.MarkerModel>
+                            <dxc:LineSeries2D.Label>
+                                <dxc:SeriesLabel TextPattern="{}{V:f1}" 
+                                                 dxc:MarkerSeries2D.Angle="90" 
+                                                 ConnectorVisible="False"/>
+                            </dxc:LineSeries2D.Label>
+                        </dxc:LineSeries2D>
+                        <dxc:LineSeries2D DisplayName="Expenses (Sellers)" 
+                                          DataSource="{Binding SellerSalaryData}" 
+                                          ArgumentScaleType="DateTime"
+                                          ArgumentDataMember="Time"
+                                          ValueDataMember="Value"
+                                          LabelsVisibility="False"
+                                          CrosshairLabelPattern="{}{A:MMMM}: {V:f2}$"
+                                          MarkerSize="14" 
+                                          MarkerVisible="True"
+                                          Brush="DarkMagenta">
+                            <dxc:LineSeries2D.MarkerModel>
+                                <dxc:RingMarker2DModel/>
+                            </dxc:LineSeries2D.MarkerModel>
+                            <dxc:LineSeries2D.Label>
+                                <dxc:SeriesLabel TextPattern="{}{V:f1}" 
+                                                 dxc:MarkerSeries2D.Angle="90" 
+                                                 ConnectorVisible="False"/>
+                            </dxc:LineSeries2D.Label>
+                        </dxc:LineSeries2D>
+                        <dxc:LineSeries2D DisplayName="Expenses (All Salaries)" 
+                                          DataSource="{Binding OverallSalaryData}" 
+                                          ArgumentScaleType="DateTime"
+                                          ArgumentDataMember="Time"
+                                          ValueDataMember="Value"
+                                          LabelsVisibility="False"
+                                          CrosshairLabelPattern="{}{A:MMMM}: {V:f2}$"
+                                          MarkerSize="14" 
+                                          MarkerVisible="True"
+                                          Brush="Red">
+                            <dxc:LineSeries2D.MarkerModel>
+                                <dxc:RingMarker2DModel/>
+                            </dxc:LineSeries2D.MarkerModel>
+                            <dxc:LineSeries2D.Label>
+                                <dxc:SeriesLabel TextPattern="{}{V:f1}" 
+                                                 dxc:MarkerSeries2D.Angle="90" 
+                                                 ConnectorVisible="False"/>
+                            </dxc:LineSeries2D.Label>
+                        </dxc:LineSeries2D>
+                    </dxc:XYDiagram2D.Series>
+                </dxc:XYDiagram2D>
+            </dxc:ChartControl.Diagram>
+            <dxc:ChartControl.Legend>
+                <dxc:Legend HorizontalPosition="Left"/>
+            </dxc:ChartControl.Legend>
+        </dxc:ChartControl>
+
+    </Grid>
+</dx:ThemedWindow>
+

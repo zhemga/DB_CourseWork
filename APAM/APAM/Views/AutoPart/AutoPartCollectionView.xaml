@@ -61,7 +61,7 @@
             <dxg:GridControl.Columns>
                 <dxg:GridColumn IsSmart="True" FieldName="AutoPartId" />
                 <dxg:GridColumn IsSmart="True" FieldName="Article" />
-                <dxg:GridColumn IsSmart="True" FieldName="ManufacturerPartCode" />
+                <dxg:GridColumn IsSmart="True" FieldName="ManufacturerPartCode" SortOrder="Ascending" SortIndex="0" />
                 <dxg:GridColumn IsSmart="True" FieldName="Cost" />
                 <dxg:GridColumn FieldName="AutoPartCarModel.Brand" Header="{x:Static localization:APAM_DBEntitiesResources.AutoPart_AutoPartCarModel}" ReadOnly="True" />
                 <dxg:GridColumn FieldName="AutoPartCategory.Category" Header="{x:Static localization:APAM_DBEntitiesResources.AutoPart_AutoPartCategory}" ReadOnly="True" />

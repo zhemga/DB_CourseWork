@@ -55,12 +55,14 @@
     <ApplicationIcon>car_23964.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Charts.Designer.v21.2, Version=21.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Charts.v21.2.Core, Version=21.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v21.2, Version=21.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Images.v21.2, Version=21.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Mvvm.v21.2">
       <Private>True</Private>
     </Reference>
     <Reference Include="DevExpress.Data.Desktop.v21.2" />
-    <Reference Include="DevExpress.Data.v21.2" />
     <Reference Include="DevExpress.Mvvm.v21.2.DataModel, Version=21.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>False</Private>
     </Reference>
@@ -70,10 +72,11 @@
     <Reference Include="DevExpress.Mvvm.v21.2.ViewModel, Version=21.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.Printing.v21.2.Core" />
+    <Reference Include="DevExpress.Printing.v21.2.Core, Version=21.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpf.Accordion.v21.2, Version=21.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>False</Private>
     </Reference>
+    <Reference Include="DevExpress.Xpf.Charts.v21.2, Version=21.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpf.Controls.v21.2, Version=21.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>False</Private>
     </Reference>
@@ -103,6 +106,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="DevExpress.Xpf.Themes.Office2019Colorful.v21.2" />
+    <Reference Include="DevExpress.XtraCharts.v21.2.UI, Version=21.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -120,7 +124,9 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Controls.Ribbon" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -263,6 +269,7 @@
     <Compile Include="ViewModels\BookkeeperSalary\BookkeeperSalaryViewModel.cs" />
     <Compile Include="ViewModels\Bookkeeper\BookkeeperCollectionViewModel.cs" />
     <Compile Include="ViewModels\Bookkeeper\BookkeeperViewModel.cs" />
+    <Compile Include="ViewModels\BusinessChartViewModel.cs" />
     <Compile Include="ViewModels\ContactType\ContactTypeCollectionViewModel.cs" />
     <Compile Include="ViewModels\ContactType\ContactTypeViewModel.cs" />
     <Compile Include="ViewModels\CustomerContact\CustomerContactCollectionViewModel.cs" />
@@ -353,6 +360,9 @@
     </Compile>
     <Compile Include="Views\Bookkeeper\BookkeeperView.xaml.cs">
       <DependentUpon>BookkeeperView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BusinnesChart.xaml.cs">
+      <DependentUpon>BusinnesChart.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ContactType\ContactTypeCollectionView.xaml.cs">
       <DependentUpon>ContactTypeCollectionView.xaml</DependentUpon>
@@ -527,6 +537,10 @@
     <Page Include="Views\Bookkeeper\BookkeeperView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\BusinnesChart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ContactType\ContactTypeCollectionView.xaml">
       <Generator>MSBuild:Compile</Generator>

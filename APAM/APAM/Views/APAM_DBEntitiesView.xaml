@@ -68,7 +68,7 @@
             </dxr:RibbonControl.ToolbarItems>
             <dxr:RibbonDefaultPageCategory Caption="defaultCategory">
                 <dxr:RibbonPage Caption="{x:Static localization:ViewResources.RibbonPage_View}" MergeOrder="1000">
-                    <dxr:RibbonPageGroup Caption="{x:Static localization:ViewResources.RibbonPageGroup_Module}">
+                    <!--<dxr:RibbonPageGroup Caption="{x:Static localization:ViewResources.RibbonPageGroup_Module}">
                         <dxb:BarSubItem Content="{x:Static localization:ViewResources.Command_Navigation}" LargeGlyph="{dx:DXImageOffice2013 Image=NavigationBar_32x32.png}" Glyph="{dx:DXImageOffice2013 Image=NavigationBar_16x16.png}">
                             <dxb:BarCheckItem GroupIndex="100" Command="{Binding ShowCommand}" CommandParameter="{Binding Modules[0]}" Content="{Binding Modules[0].ModuleTitle}" />
                             <dxb:BarCheckItem GroupIndex="100" Command="{Binding ShowCommand}" CommandParameter="{Binding Modules[1]}" Content="{Binding Modules[1].ModuleTitle}" />
@@ -91,7 +91,7 @@
                             <dxb:BarCheckItem GroupIndex="100" Command="{Binding ShowCommand}" CommandParameter="{Binding Modules[18]}" Content="{Binding Modules[18].ModuleTitle}" />
                             <dxb:BarCheckItem GroupIndex="100" Command="{Binding ShowCommand}" CommandParameter="{Binding Modules[19]}" Content="{Binding Modules[19].ModuleTitle}" />
                         </dxb:BarSubItem>
-                    </dxr:RibbonPageGroup>
+                    </dxr:RibbonPageGroup>-->
                     <dxr:RibbonPageGroup Caption="{x:Static localization:ViewResources.RibbonPageGroup_Layout}" MergeOrder="1001">
                         <dxb:BarSubItem Content="{x:Static localization:ViewResources.Command_FolderPane}" LargeGlyph="{dx:DXImage Image=FolderPanel_32x32.png}" Glyph="{dx:DXImage Image=FolderPanel_16x16.png}">
                             <dxb:BarCheckItem Content="{x:Static localization:ViewResources.Command_FolderPaneNormal}" IsChecked="{Binding NavigationPaneVisibility, Mode=TwoWay, Converter={StaticResource NavigationPaneIsNormalConverter}}" />
@@ -108,6 +108,12 @@
                     </dxr:RibbonPageGroup>
                 </dxr:RibbonPage>
             </dxr:RibbonDefaultPageCategory>
+            <dxr:RibbonPage Caption="Business">
+                <dxr:RibbonPageGroup Caption="Statistic">
+                    <dxb:BarButtonItem Content="Report" LargeGlyph="{dx:DXImage Image=FunctionsStatistical_32x32.png}" Glyph="{dx:DXImage Image=FunctionsStatistical_16x16.png}" ItemClick="BarShowStatisticReport">
+                    </dxb:BarButtonItem>
+                </dxr:RibbonPageGroup>
+            </dxr:RibbonPage>
         </dxr:RibbonControl>
         <dxr:RibbonStatusBarControl DockPanel.Dock="Bottom">
             <dxr:RibbonStatusBarControl.RightItems>
